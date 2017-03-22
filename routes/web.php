@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/reunioes', 'ReuniaoController@index');
+
+Route::get('/reunioes/create', 'ReuniaoController@create');
