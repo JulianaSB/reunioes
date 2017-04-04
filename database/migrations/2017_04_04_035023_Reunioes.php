@@ -25,6 +25,7 @@ class Reunioes extends Migration
             $table->tinyInteger('Quorum');
             $table->tinyInteger('Segunda_Chamada');
             $table->string('Participantes');
+            $table->string('Data_Hora');
             $table->timestamps();
         });
     }

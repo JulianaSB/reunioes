@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Reuniao;
 use Illuminate\Http\Request;
-use Reuniao;
+namespace App\Http\Controllers;
 
 class ReuniaoController extends Controller
 {
@@ -36,9 +37,9 @@ class ReuniaoController extends Controller
     public function store(Request $request)
     {
         $reuniao = new Reuniao;
-        $reuniao->assunto       = $request->assunto;
-        $reuniao->tema          = $request->tema;
-        $reuniao->pautas    = $request->pautas;
+        $reuniao->Assunto       = $request->assunto;
+        $reuniao->Tema          = $request->tema;
+        $reuniao->Pautas    = $request->pautas;
         $reuniao->save();
     }
 

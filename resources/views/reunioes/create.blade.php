@@ -97,31 +97,20 @@
 
     <script>
         $(function () {
-            $('#formUsuario').on('submit', function(e){
+            $('#formReunioes').on('submit', function(e){
                 e.preventDefault();
                 $.ajax({
                     method: 'POST',
-                    url: "/reunioes/",
+                    url: "/reunioes/store",
                     dataType: 'json',
                     success: function(result){
                         if (result.status == 'SUCCESS'){
-                            swal("Sucesso!", "Usuário cadastrado com sucesso", "success")
-                            $('.selectpicker').selectpicker('deselectAll');
-                            $("#formUsuario")[0].reset();
+                           alert('SUCESSO');
                         } else {
-                            swal("Erro", "Usuário não pode ser cadastrado. Tente novamente.", "error")
-                            $('.selectpicker').selectpicker('deselectAll');
-                            $("#formUsuario")[0].reset();
+                            alert('Não');
                         }
                     }
                 });
             })
-        });
-
-        $(document).ready(function(){
-            $('button.back').click(function(){
-                parent.history.back();
-                return false;
-            });
         });
     </script>

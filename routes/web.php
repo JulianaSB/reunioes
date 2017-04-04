@@ -14,11 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/reunioes', 'ReuniaoController@index');
-
-Route::get('/reunioes/create', 'ReuniaoController@create');
-
 Auth::routes();
-
 Route::get('/home', 'HomeController@index');
+Route::resource('reunioes', 'ReuniaoController');
