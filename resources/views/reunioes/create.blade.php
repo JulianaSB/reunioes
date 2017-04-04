@@ -132,11 +132,8 @@
                     data: reunioes,
                     dataType: "json",
                     success: function(data) {
-                        alert(data.d);
+                        alert("Reunião agendada com sucesso!");
                     },
-                    error: function(data){
-                        alert("fail");
-                    }
                 });
             });
         });
