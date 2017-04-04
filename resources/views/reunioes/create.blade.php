@@ -1,4 +1,34 @@
-    <section class="content-header">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 2 | Dashboard</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="layout_boot/bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="layout_boot/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="layout_boot/dist/css/skins/_all-skins.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="layout_boot/plugins/iCheck/flat/blue.css">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="layout_boot/plugins/morris/morris.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="layout_boot/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="layout_boot/plugins/datepicker/datepicker3.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="layout_boot/plugins/daterangepicker/daterangepicker.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="layout_boot/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+</head>   
+   <section class="content-header">
     <meta name="csrf-token" content="{{ csrf_token() }}">
         <h1>
             Reuniões
@@ -29,7 +59,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="assunto">Assunto</label>
-                                        <select class="form-control" id="assunto" name="assunto">
+                                        <select class="form-control required" id="assunto" name="assunto">
                                                 <option value="atividades_extra">Atividades Extracurriculares</option>
                                         </select>
                                     </div>
@@ -55,7 +85,7 @@
                                 <div class="col-md-6">
                                      <div class="form-group">
                                             <label for="data_hora">Data e Hora</label>
-                                            <input type="text" id="data_hora" name="data_hora" placeholder="Data e Hora">
+                                            <input type="text" id="data_hora" name="data_hora" class="datepicker" placeholder="Data e Hora">
                                         </div>
                                 </div>
                                 <div class="col-md-6">
@@ -109,6 +139,10 @@
     <script>
         $(function () {
             $('#formReunioes').on('submit', function(e){
+            if ($('#required') == "") {
+                alert("Name must be filled out");
+                return false;
+              }
                 e.preventDefault();
                 $.ajaxSetup({
                     headers: {
@@ -120,7 +154,7 @@
                     tema: $("#tema").val(),
                     pautas: $("#pautas").val(),
                     descricao: $("#descricao").val(),
-                    data_hora: $("#data_hora").val(),
+                    data_hora: convertData($("#data_hora").val()),
                     tipo_reuniao: $("#tipo_reuniao").val(),
                     segunda_chamada: $("#segunda_chamada").val(),
                     participantes: $("#participantes").val(),
@@ -137,4 +171,34 @@
                 });
             });
         });
+		
+		$(function() {
+    $( ".datepicker" ).datepicker( {
+
+        showOtherMonths: true,
+        selectOtherMonths: true,
+        //minDate: 0,
+        dateFormat: 'dd/mm/yy',
+        dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
+        dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
+    });
+
+  });
+
+  $(function() {
+    $( ".datepicker_pesquisa" ).datepicker( {
+
+      
+        dateFormat: 'dd/mm/yy',
+        dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
+        dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
+    });
+
+  });
     </script>
