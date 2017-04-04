@@ -14,7 +14,7 @@ class ReuniaoController extends Controller
      */
     public function index()
     {
-        return view('reunioes.index');
+        return view('reunioes.create');
     }
 
     /**
