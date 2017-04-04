@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Reuniao;
 use Illuminate\Http\Request;
-namespace App\Http\Controllers;
 
 class ReuniaoController extends Controller
 {
@@ -37,12 +36,17 @@ class ReuniaoController extends Controller
     public function store(Request $request)
     {
         $reuniao = new Reuniao;
+        $reuniao->ID_Organizador = '1';
         $reuniao->Assunto       = $request->assunto;
         $reuniao->Tema          = $request->tema;
-        $reuniao->Pautas    = $request->pautas;
+        $reuniao->Pautas        = $request->pautas;
+        $reuniao->Descricao     = $request->descricao;
+        $reuniao->Data_Hora     = $request->data_hora;
+        $reuniao->Tipo_Reuniao  = $request->tipo_reuniao;
+        $reuniao->Segunda_Chamada = $request->segunda_chamada;
+        $reuniao->Participantes = $request->participantes;
         $reuniao->save();
     }
-
     /**
      * Display the specified resource.
      *

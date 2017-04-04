@@ -1,4 +1,5 @@
     <section class="content-header">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
         <h1>
             Reuniões
             <small>Descrição</small>
@@ -47,13 +48,19 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="senha">Descrição</label>
-                                        <input type="password" class="form-control required" id="descricao" name="descricao" placeholder="Descrição">
+                                        <label for="descricao">Descrição</label>
+                                        <input type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                      <div class="form-group">
-                                            <label for="assunto">Tipo de Reunião</label>
+                                            <label for="data_hora">Data e Hora</label>
+                                            <input type="text" id="data_hora" name="data_hora" placeholder="Data e Hora">
+                                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                     <div class="form-group">
+                                            <label for="tipo_reuniao">Tipo de Reunião</label>
                                             <select class="form-control" id="tipo_reuniao" name="tipo_reuniao">
                                                     <option value="reuniao_de_area">Reunião de Área</option>
                                             </select>
@@ -62,13 +69,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="quorum">Quorum?</label>
-                                        <input type="checkbox" class="form-control" id="quorum" name="quorum" maxlength="15" value="sim">
+                                        <input type="checkbox" class="form-control" id="quorum" name="quorum" maxlength="15" value="1">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="quorum">Segunda chamada</label>
-                                        <input type="checkbox" class="form-control" id="segunda_chamada" name="segunda_chamada" maxlength="15" value="sim">
+                                        <input type="checkbox" class="form-control" id="segunda_chamada" name="segunda_chamada" maxlength="15" value="1">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -94,23 +101,43 @@
             </div>
             <!-- /.box -->
     </section>
-
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous">
+</script>
     <script>
         $(function () {
             $('#formReunioes').on('submit', function(e){
                 e.preventDefault();
-                $.ajax({
-                    method: 'POST',
-                    url: "/reunioes/store",
-                    dataType: 'json',
-                    success: function(result){
-                        if (result.status == 'SUCCESS'){
-                           alert('SUCESSO');
-                        } else {
-                            alert('Não');
-                        }
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-            })
+                var reunioes = {
+                    assunto: $("#assunto").val(),
+                    tema: $("#tema").val(),
+                    pautas: $("#pautas").val(),
+                    descricao: $("#descricao").val(),
+                    data_hora: $("#data_hora").val(),
+                    tipo_reuniao: $("#tipo_reuniao").val(),
+                    segunda_chamada: $("#segunda_chamada").val(),
+                    participantes: $("#participantes").val(),
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/reunioes",
+                    data: reunioes,
+                    dataType: "json",
+                    success: function(data) {
+                        alert(data.d);
+                    },
+                    error: function(data){
+                        alert("fail");
+                    }
+                });
+            });
         });
     </script>
