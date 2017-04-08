@@ -1,35 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="layout_boot/bootstrap/css/bootstrap.min.css">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="layout_boot/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="layout_boot/dist/css/skins/_all-skins.min.css">
-  <!-- iCheck -->
-  <link rel="stylesheet" href="layout_boot/plugins/iCheck/flat/blue.css">
-  <!-- Morris chart -->
-  <link rel="stylesheet" href="layout_boot/plugins/morris/morris.css">
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="layout_boot/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="layout_boot/plugins/datepicker/datepicker3.css">
-  <!-- Daterange picker -->
-  <link rel="stylesheet" href="layout_boot/plugins/daterangepicker/daterangepicker.css">
-  <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="layout_boot/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-</head>   
-   <section class="content-header">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+@extends('base')
+
+@section('content')
+    @if (session('success'))
+        <div class="alert alert-success">
+            <h4><i class="fa fa-check"></i> Pronto! </h4>
+            <strong>{{ session('success') }}</strong>
+        </div>
+    @elseif (session('failed'))
+        <div class="alert alert-danger">
+            <h4><i class="fa fa-warning"></i> ERRO! </h4>
+            <strong>{{ session('failed') }}</strong>
+        </div>
+    @endif
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
         <h1>
             Reuniões
             <small>Descrição</small>
@@ -59,7 +43,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="assunto">Assunto</label>
-                                        <select class="form-control required" id="assunto" name="assunto">
+                                        <select class="form-control" id="assunto" name="assunto">
                                                 <option value="atividades_extra">Atividades Extracurriculares</option>
                                         </select>
                                     </div>
@@ -85,7 +69,7 @@
                                 <div class="col-md-6">
                                      <div class="form-group">
                                             <label for="data_hora">Data e Hora</label>
-                                            <input type="text" id="data_hora" name="data_hora" class="datepicker" placeholder="Data e Hora">
+                                            <input type="text" id="data_hora" name="data_hora" class="datepicker required" placeholder="Data e Hora">
                                         </div>
                                 </div>
                                 <div class="col-md-6">
@@ -114,23 +98,21 @@
                                             <select class="form-control" id="participantes" name="participantes">
                                                     <option value="rogerio">Rogério</option>
                                             </select>
-                                        </div>
+                                        <</div>
                                 </div>
                             </div>
                         </div>
-
-                <!-- /.box-body -->
-
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                    <button class="btn btn-default back">Cancelar</button>
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                </div>
+                        <div class="box-footer">
+                            <button type="submit" class="btn btn-primary">Salvar</button>
+                            <button class="btn btn-default back">Cancelar</button>
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        </div>
+                    </div>
                 </form>
-                </div>
             </div>
-            <!-- /.box -->
+        </div>
     </section>
+@endsection
 <script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
@@ -139,11 +121,12 @@
     <script>
         $(function () {
             $('#formReunioes').on('submit', function(e){
-            if ($('#required') == "") {
-                alert("Name must be filled out");
-                return false;
-              }
                 e.preventDefault();
+                $(".required").parent('.form-group').removeClass('has-error');
+                $(".required").each(function(){
+                    if ($(this).val() == '')
+                        $(this).parent('.form-group').addClass('has-error');
+                });
                 $.ajaxSetup({
                     headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

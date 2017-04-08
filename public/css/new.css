@@ -1,0 +1,140 @@
+.select2-container--default .select2-selection--multiple {
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    cursor: text;
+}
+
+.select2-container--default .select2-selection--multiple .has-error {
+    background-color: white;
+    border: 1px solid red;
+    border-radius: 0px;
+    cursor: text;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border: 0px;
+    outline: 0;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    display: block;
+    padding-left: 0;
+    padding-right: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border: solid #367fa9 1px;
+    outline: 0;
+}
+
+.select2-container--classic .select2-selection--multiple .select2-selection__choice {
+  background-color: #ffffff;
+    border: 1px solid #ccc;
+   border-radius: 2px;
+    cursor: default;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 0 5px;
+    color: #4a4a4a;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #f2f2f2;
+    border: 1px solid #3c8dbc;
+    border-radius: 4px;
+    cursor: default;
+    float: left;
+    margin-right: 5px;
+    margin-top: 5px;
+    padding: 0 5px;
+    color: #3c8dbc;
+}
+
+.select2-container--default .select2-selection--single {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+}
+
+.select2-container .select2-selection--single {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: block;
+    height: auto;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.select2-dropdown {
+    background-color: white;
+    border: 1px solid #3c8dbc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    left: -100000px;
+    width: 100%;
+    z-index: 1051;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice .has-error,
+.has-error .help-block,
+.has-error .control-label,
+.has-error .radio,
+.has-error .checkbox,
+.has-error .radio-inline,
+.has-error .checkbox-inline,
+.has-error.radio label,
+.has-error.checkbox label,
+.has-error.radio-inline label,
+.has-error.checkbox-inline label {
+    color: #dd4b39;
+}
+
+.form-group.has-error .form-control, .form-group.has-error .input-group-addon{
+    border-color:#dd4b39;
+}
+
+
+.has-error .form-control {
+    border-color: #a94442;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+.has-error .form-control:focus {
+    border-color: #843534;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+}
+.has-error .input-group-addon {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #a94442;
+}
+.has-error .form-control{
+    color: #a94442;
+}
+
+.alert-success {
+    border-radius: 0px !important;
+}
+
+.alert-danger {
+    border-radius: 0px !important;
+}
+.click {
+     cursor:pointer;
+}
+
+table.dataTable tbody td.clickable {
+    cursor: pointer;
+}
+
+.small-box a i.fa {
+    margin-left: 5px;
+}
