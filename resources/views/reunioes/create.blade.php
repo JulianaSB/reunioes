@@ -69,7 +69,7 @@
                                 <div class="col-md-6">
                                      <div class="form-group">
                                             <label for="data_hora">Data e Hora</label>
-                                            <input type="text" id="data_hora" name="data_hora" class="datepicker required" placeholder="Data e Hora">
+                                            <input type="text" id="daterangepicker" name="data_hora" class="daterangepicker required" placeholder="Data e Hora">
                                         </div>
                                 </div>
                                 <div class="col-md-6">
@@ -118,6 +118,7 @@
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous">
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/i18n/jquery-ui-timepicker-addon-i18n.js"></script>
     <script>
         $(function () {
             $('#formReunioes').on('submit', function(e){
@@ -153,35 +154,6 @@
                     },
                 });
             });
+            $( ".daterangepicker" ).daterangepicker();
         });
-		
-		$(function() {
-    $( ".datepicker" ).datepicker( {
-
-        showOtherMonths: true,
-        selectOtherMonths: true,
-        //minDate: 0,
-        dateFormat: 'dd/mm/yy',
-        dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
-        dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
-    });
-
-  });
-
-  $(function() {
-    $( ".datepicker_pesquisa" ).datepicker( {
-
-      
-        dateFormat: 'dd/mm/yy',
-        dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
-        dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
-        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
-        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
-    });
-
-  });
     </script>
