@@ -42,7 +42,7 @@
             .top-right {
                 position: absolute;
                 right: 10px;
-                top: 18px;
+                top: 22px;
             }
 
             .content {
@@ -95,10 +95,10 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">Início</a>
                     @else
                         <a href="{{ url('/login') }}">Login</a>
-                        <a href="{{ url('/register') }}">Register</a>
+                        <a href="{{ url('/register') }}">Registrar</a>
                     @endif
                 </div>
             @endif     
@@ -110,19 +110,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-message">
-                        <h1>Landing Page</h1>
-                        <h3>A Template by Start Bootstrap</h3>
+                        <h1>Reuniões</h1>
+                        <h3>Agendamento e acompanhamento de reuniões</h3>
                         <hr class="intro-divider">
-                        <ul class="list-inline intro-social-buttons">
+                         <ul class="list-inline intro-social-buttons">
                             <li>
-                                <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                                <a href="{{ url('/register') }}" class="btn btn-default btn-lg">Cadastre-se</a>
                             </li>
-                            <li>
-                                <a href="https://github.com/IronSummitMedia/startbootstrap" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
-                            </li>
+                          
                         </ul>
                     </div>
                 </div>
@@ -195,22 +190,22 @@
                 <div class="col-lg-12">
                     <ul class="list-inline">
                         <li>
-                            <a href="#">Home</a>
+                            <a href="#">Início</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#about">About</a>
+                            <a href="#about">Sobre</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#services">Services</a>
+                            <a href="#services">Serviços</a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#contact">Contact</a>
+                            <a href="#contact">Contato</a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Your Company 2014. All Rights Reserved</p>
+                    <p class="copyright text-muted small">Copyright &copy; Company 2017. All Rights Reserved</p>
                 </div>
             </div>
         </div>

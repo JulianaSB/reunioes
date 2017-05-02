@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+
+ <script>
+    function somenteNumeros(num) {
+        var er = /[^0-9.]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+        }
+    }
+ </script>
+ 
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -38,6 +50,20 @@
                             </div>
                         </div>
 
+                       <div class="form-group{{ $errors->has('ra') ? ' has-error' : '' }}">
+                            <label for="ra"  class="col-md-4 control-label">R.A.</label>
+
+                            <div class="col-md-6">
+                                <input id="ra" type="text" onkeyup="somenteNumeros(this);" class="form-control" name="ra" value="{{ old('ra') }}" required autofocus>
+
+                                @if ($errors->has('ra'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ra') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('setor') ? ' has-error' : '' }}">
                             <label for="setor" class="col-md-4 control-label">Setor</label>
 
@@ -51,11 +77,12 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
+
+                         <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
                             <label for="cpf" class="col-md-4 control-label">CPF</label>
 
                             <div class="col-md-6">
-                                <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}" required autofocus>
+                                <input id="cpf" type="text" onkeyup="somenteNumeros(this);" class="form-control" name="cpf" value="{{ old('cpf') }}" required autofocus>
 
                                 @if ($errors->has('cpf'))
                                     <span class="help-block">

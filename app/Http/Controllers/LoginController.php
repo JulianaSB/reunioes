@@ -11,6 +11,6 @@ class LoginController extends Controller
 
     public function index()
     {
-        return view('reunioes.create');
+        return view('home');
     }
 }
