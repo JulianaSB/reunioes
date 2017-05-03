@@ -115,7 +115,13 @@
                         <hr class="intro-divider">
                          <ul class="list-inline intro-social-buttons">
                             <li>
-                                <a href="{{ url('/register') }}" class="btn btn-default btn-lg">Cadastre-se</a>
+                                <a href="{{ url('/reunioes/create') }}" class="btn btn-default btn-lg">Criar nova Reunião</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/reunioes/create') }}" class="btn btn-default btn-lg">Gerenciar suas Reuniões</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/reunioes/create') }}" class="btn btn-default btn-lg">Reuniões que foi convidado</a>
                             </li>
                         </ul>
                     </div>
