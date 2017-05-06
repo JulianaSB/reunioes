@@ -128,57 +128,6 @@
     </div>
     <!-- /.intro-header -->
 
-    <!-- Page Content -->
-
-    <a  name="services"></a>
-    <div class="content-section-a">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading">Criação e gerenciamento de reuniões:</h2>
-                    <p class="lead">Para obter um maior controle de suas reuniões, melhor interação e compartilhamento de idéias entre seu grupo de trabalho e entre amigos.</p>
-                </div>
-                <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="img/ipad.png" alt="">
-                </div>
-            </div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
-    <!-- /.content-section-a -->
-
-    <a  name="contact"></a>
-    <div class="banner">
-
-        <div class="container">
-
-            <div class="row">
-                <div class="col-lg-6">
-                    <h2>Se conecte com a IFSP:</h2>
-                </div>
-                <div class="col-lg-4">
-                    <ul class="list-inline banner-social-buttons">
-                        <li>
-                            <a href="http://portal.ifspguarulhos.edu.br/" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Site Oficial</span></a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/ifspguarulhos/" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Facebook</span></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-        <!-- /.container -->
-
-    </div>
-    <!-- /.banner -->
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -186,14 +135,18 @@
                 <div class="col-lg-12">
                     <ul class="list-inline">
                         <li>
-                            <a href="#">Início</a>
+                            <a href="#"> <span class="network-name">Início</span></a>
                         </li>
                         <li class="footer-menu-divider">&sdot;</li>
                         <li>
-                            <a href="#contact">Contato</a>
+                            <a href="http://portal.ifspguarulhos.edu.br/"><span class="network-name">Site Oficial IFSP</span></a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                             <a href="https://www.facebook.com/ifspguarulhos/"><span class="network-name">Facebook IFSP</span></a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Company 2017. All Rights Reserved</p>
+                    <p class="copyright text-muted small">Érika - Jéssica - Juliana - Morgana - Veronica | Reuniões &copy; 2017. All Rights Reserved</p>
                 </div>
             </div>
         </div>

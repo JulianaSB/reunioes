@@ -54,7 +54,6 @@
                             <label for="ra"  class="col-md-4 control-label">R.A.</label>
 
                             <div class="col-md-6">
-                                <input id="ra" type="text" onkeyup="somenteNumeros(this);" class="form-control" name="ra" value="{{ old('ra') }}" required autofocus>
 
                                 @if ($errors->has('ra'))
                                     <span class="help-block">
@@ -82,7 +81,6 @@
                             <label for="cpf" class="col-md-4 control-label">CPF</label>
 
                             <div class="col-md-6">
-                                <input id="cpf" type="text" onkeyup="somenteNumeros(this);" class="form-control" name="cpf" value="{{ old('cpf') }}" required autofocus>
 
                                 @if ($errors->has('cpf'))
                                     <span class="help-block">
@@ -96,7 +94,7 @@
                             <label for="password" class="col-md-4 control-label">Senha</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" maxlength="10" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">

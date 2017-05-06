@@ -23,7 +23,7 @@
 <div class="wrapper">
 
   <header class="main-header">
-    <a href="/home" class="logo">
+    <a href="/logado" class="logo">
       <span class="logo-mini"><b>Reuniões</b></span>
       <span class="logo-lg"><b>Reuniões</b></span>
     </a>
