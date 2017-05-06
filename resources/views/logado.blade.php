@@ -96,6 +96,15 @@
                 <div class="top-right links">
                     @if (Auth::check())
                         <a href="{{ url('/logado') }}">Início</a>
+                         <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
                     @else
                         <a href="{{ url('/login') }}">Login</a>
                         <a href="{{ url('/register') }}">Registrar</a>
@@ -192,14 +201,10 @@
                 <div class="col-lg-12">
                     <ul class="list-inline">
                         <li>
-                            <a href="#">Início</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#contact">Contato</a>
-                        </li>
+                            <a href="#"> <span class="network-name">Início</span></a>
+                        </li>                        
                     </ul>
-                    <p class="copyright text-muted small">Copyright &copy; Company 2017. All Rights Reserved</p>
+                    <p class="copyright text-muted small">Érika - Jéssica - Juliana - Morgana - Veronica | Reuniões &copy; 2017. All Rights Reserved</p>
                 </div>
             </div>
         </div>
