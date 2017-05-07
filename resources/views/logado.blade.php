@@ -127,7 +127,7 @@
                                 <a href="{{ url('/reunioes/create') }}" class="btn btn-default btn-lg">Criar nova Reunião</a>
                             </li>
                             <li>
-                                <a href="{{ url('/reunioes/create') }}" class="btn btn-default btn-lg">Gerenciar suas Reuniões</a>
+                                <a href="{{ url('/reunioes/manage') }}" class="btn btn-default btn-lg">Gerenciar suas Reuniões</a>
                             </li>
                             <li>
                                 <a href="{{ url('/reunioes/create') }}" class="btn btn-default btn-lg">Reuniões que foi convidado</a>

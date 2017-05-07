@@ -93,12 +93,12 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                     <div class="form-group">
-                                            <label for="participantes">Participantes</label>
-                                            <select class="form-control" id="participantes" name="participantes">
-                                                    <option value="rogerio">Rogério</option>
-                                            </select>
-                                        <</div>
+                                    <div class="form-group">
+                                        <label for="participantes">Participantes</label>
+                                        <select class="form-control" id="participantes" name="participantes">
+                                            <option value="rogerio">Rogério</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
