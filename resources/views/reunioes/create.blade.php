@@ -43,8 +43,13 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="assunto">Assunto</label>
-                                        <select class="form-control" id="assunto" name="assunto">
+                                        <!-- <select class="form-control" id="assunto" name="assunto">
                                                 <option value="atividades_extra">Atividades Extracurriculares</option>
+                                        </select><br> -->
+                                        <select id="assunto" name="assunto" class="form-control">
+                                          @foreach($itemlist as $items)
+                                            <option value="{{ $items->id }}">{{ $items->assunto }}</option>
+                                          @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -52,7 +57,7 @@
                                     <div class="form-group">
                                         <label for="tema">Tema</label>
                                         <input type="tema" class="form-control required" id="tema" name="tema" placeholder="Tema">
-                                    </div>
+                                    </div>  
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">

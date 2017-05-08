@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Reuniao;
 use Illuminate\Http\Request;
+use DB;
 
 class ReuniaoController extends Controller
 {
@@ -24,7 +25,12 @@ class ReuniaoController extends Controller
      */
     public function create()
     {
-        return view('reunioes.create');
+        $items = array(
+            'itemlist' =>  DB::table('Assunto')->get()
+        );
+        // var_dump($items);
+        // die();
+        return view('reunioes.create', $items);
     }
 
     /**
