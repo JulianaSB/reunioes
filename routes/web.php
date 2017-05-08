@@ -20,3 +20,4 @@ Route::resource('reunioes', 'ReuniaoController');
 Route::resource('condominio', 'CondominiumController');
 Route::get('/welcome', 'LoginController@index');
 Route::get('/logado', 'LogadoController@index');
+Route::get('/reunioes-participa', 'ParticipaController@index');
