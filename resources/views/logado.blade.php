@@ -124,13 +124,16 @@
                         <hr class="intro-divider">
                          <ul class="list-inline intro-social-buttons">
                             <li>
-                                <a href="{{ url('/reunioes/create') }}" class="btn btn-default btn-lg">Criar nova Reunião</a>
+                                <a href="{{ url('/reunioes/create') }}" class="btn btn-default btn-lg">Criar Reunião</a>
                             </li>
                             <li>
-                                <a href="{{ url('manage') }}" class="btn btn-default btn-lg">Gerenciar suas Reuniões</a>
+                                <a href="{{ url('manage') }}" class="btn btn-default btn-lg">Gerenciar Reuniões</a>
                             </li>
                             <li>
-                                <a href="{{ url('reunioes-participa') }}" class="btn btn-default btn-lg">Reuniões que foi convidado</a>
+                                <a href="{{ url('reunioes-participa') }}" class="btn btn-default btn-lg">Reuniões que participa</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('reunioes-participa') }}" class="btn btn-default btn-lg">Convites de Reuniões</a>
                             </li>
                         </ul>
                     </div>
