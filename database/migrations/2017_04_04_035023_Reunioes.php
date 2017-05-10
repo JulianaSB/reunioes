@@ -16,7 +16,7 @@ class Reunioes extends Migration
         Schema::create('Reunioes', function($table){
             $table->increments('ID_Reuniao');
             $table->integer('ID_Organizador')->unsigned();
-            $table->foreign('ID_Organizador')->references('ID_Usuario')->on('Usuarios');
+            $table->foreign('ID_Organizador')->references('id')->on('users');
             $table->string('Assunto');
             $table->string('Tema');
             $table->string('Pautas');
