@@ -51,6 +51,7 @@
                                             <option value="{{ $items->id }}">{{ $items->assunto }}</option>
                                           @endforeach
                                         </select>
+                                        
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -74,7 +75,7 @@
                                 <div class="col-md-6">
                                      <div class="form-group">
                                             <label for="data_hora">Data e Hora</label>
-                                            <input type="text" id="daterangepicker" name="data_hora" class="daterangepicker required" placeholder="Data e Hora">
+                                            <input type="text" id="datepicker" name="datepicker" class="datepicker required" placeholder="Data e Hora">
                                         </div>
                                 </div>
                                 <div class="col-md-6">
@@ -87,25 +88,26 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="quorum">Quorum?</label>
-                                        <input type="checkbox" class="form-control" id="quorum" name="quorum" maxlength="15" value="1">
+                                        <label for="opcoes">Opções</label>
+                                        <br>
+                                        <input type="checkbox" id="icheck" name="icheck">Quorum obrigatório
+                                        <input type="checkbox" id="icheck" name="icheck">Segunda chamada
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="quorum">Segunda chamada</label>
-                                        <input type="checkbox" class="form-control" id="segunda_chamada" name="segunda_chamada" maxlength="15" value="1">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="participantes">Participantes</label>
-                                        <select class="form-control" id="participantes" name="participantes">
-                                            <option value="rogerio">Rogério</option>
+                                        <label for="assunto">Participantes</label>
+                                        <!-- <select class="form-control" id="assunto" name="assunto">
+                                                <option value="atividades_extra">Atividades Extracurriculares</option>
+                                        </select><br> -->
+                                        <select id="assunto" name="assunto" class="form-control">
+                                         @foreach($participa as $participantes)
+                                            <option value="{{ $participantes->id }}">{{ $participantes->name }}</option>
+                                          @endforeach
                                         </select>
+                                        
                                     </div>
                                 </div>
-                            </div>
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Salvar</button>
@@ -126,6 +128,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/i18n/jquery-ui-timepicker-addon-i18n.js"></script>
     <script>
         $(function () {
+            $('#icheck').iCheck();
+            $('#datepicker').datepicker();
             $('#formReunioes').on('submit', function(e){
                 e.preventDefault();
                 $(".required").parent('.form-group').removeClass('has-error');
@@ -133,32 +137,28 @@
                     if ($(this).val() == '')
                         $(this).parent('.form-group').addClass('has-error');
                 });
-                $.ajaxSetup({
-                    headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
                 var reunioes = {
                     assunto: $("#assunto").val(),
                     tema: $("#tema").val(),
                     pautas: $("#pautas").val(),
                     descricao: $("#descricao").val(),
-                    data_hora: convertData($("#data_hora").val()),
+                    data_hora: $("#data_hora").val(),
                     tipo_reuniao: $("#tipo_reuniao").val(),
                     segunda_chamada: $("#segunda_chamada").val(),
                     participantes: $("#participantes").val(),
                 }
+
 
                 $.ajax({
                     type: "POST",
                     url: "/reunioes",
                     data: reunioes,
                     dataType: "json",
+                    contentType: "application/json; charset=utf-8",
                     success: function(data) {
                         alert("Reunião agendada com sucesso!");
                     },
                 });
             });
-            $( ".daterangepicker" ).daterangepicker();
         });
     </script>

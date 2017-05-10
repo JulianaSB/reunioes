@@ -25,12 +25,14 @@ class ReuniaoController extends Controller
      */
     public function create()
     {
-        $items = array(
-            'itemlist' =>  DB::table('Assunto')->get()
-        );
-        // var_dump($items);
-        // die();
-        return view('reunioes.create', $items);
+        $items = DB::table('Assunto')->get();
+
+        $participantes = DB::table('users')->get();
+
+        return view('reunioes.create', [
+            'itemlist' => $items, 
+            'participa' => $participantes
+        ]);
     }
 
     /**
