@@ -11,6 +11,26 @@
           campo.value = "";
         }
     }
+   
+    function txtBoxFormat(evtKeyPress) {
+        var i, nCount, sValue, fldLen, mskLen,bolMask, sCod, nTecla;
+
+        if(document.all) { // Internet Explorer
+            nTecla = evtKeyPress.keyCode;
+        } else if(document.layers) { // Nestcape
+            nTecla = evtKeyPress.which;
+        } else {
+            nTecla = evtKeyPress.which;
+            if (nTecla == 8) {
+                return true;
+            }
+        }
+        if (nTecla != 8)
+          return ((nTecla <= 47) || (nTecla >= 58)); 
+        else 
+          return true;
+    }
+
  </script>
  
 <div class="container">
@@ -26,7 +46,7 @@
                             <label for="name" class="col-md-4 control-label">Nome</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" onkeypress="return txtBoxFormat(event);" minlength="3" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -68,7 +88,7 @@
                             <label for="setor" class="col-md-4 control-label">Setor</label>
 
                             <div class="col-md-6">
-                                <input id="setor" type="text" class="form-control" name="setor" value="{{ old('setor') }}" required autofocus>
+                                <input id="setor" type="text" class="form-control" onkeypress="return txtBoxFormat(event);" name="setor" value="{{ old('setor') }}" required autofocus>
 
                                 @if ($errors->has('setor'))
                                     <span class="help-block">
