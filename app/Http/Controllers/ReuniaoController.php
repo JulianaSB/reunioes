@@ -44,12 +44,14 @@ class ReuniaoController extends Controller
     public function store(Request $request)
     {
         $reuniao = new Reuniao;
+        $reuniao->ID_Organizador= '2';
         $reuniao->Assunto       = $request->assunto;
         $reuniao->Tema          = $request->tema;
         $reuniao->Pautas        = $request->pautas;
         $reuniao->Descricao     = $request->descricao;
         $reuniao->Data_Hora     = $request->data_hora;
         $reuniao->Tipo_Reuniao  = $request->tipo_reuniao;
+        $reuniao->Quorum        = $request->quorum;
         $reuniao->Segunda_Chamada = $request->segunda_chamada;
         $reuniao->Participantes = $request->participantes;
         $reuniao->save();

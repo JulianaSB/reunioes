@@ -1,3 +1,7 @@
+<?php
+ini_set('display_errors', 1); 
+error_reporting(E_ALL);
+?>
 @extends('base')
 
 @section('content')
@@ -26,8 +30,7 @@
 
     <!-- Main content -->
     <section class="content">
-    <meta name="_token" content="{{ csrf_token() }}">
-
+    <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="row">
             <!-- left column -->
             <div class="col-md-12">
@@ -89,10 +92,18 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="opcoes">Opções</label>
+                                        <label for="quorum">Quorum?</label>
                                         <br>
-                                        <input type="checkbox" id="icheck" name="quorum" value="quorum">Quorum obrigatório
-                                        <input type="checkbox" id="icheck" name="segunda_chamada" value="segunda_chamada">Segunda chamada
+                                        <input type="radio" id="quorum" name="quorum" value="1">Sim
+                                        <input type="radio" id="quorum" name="quorum" value="0"> Não
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="segunda_chamada">Segunda Chamada?</label>
+                                        <br>
+                                        <input type="radio" id="segunda_chamada" name="segunda_chamada" value="1">Sim
+                                        <input type="radio" id="segunda_chamada" name="segunda_chamada" value="0"> Não
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -145,14 +156,16 @@
                 });
                 
                 var reunioes = {
+                    _token: "{{ csrf_token() }}",
                     assunto: $("#assunto").val(),
                     tema: $("#tema").val(),
                     pautas: $("#pautas").val(),
                     descricao: $("#descricao").val(),
                     data_hora: $("#datepicker").val(),
                     tipo_reuniao: $("#tipo_reuniao").val(),
-                    opcoes: $("#opcoes").val(),
-                    participantes: $("#participantes").val(),
+                    quorum: $("#quorum").val(),
+                    segunda_chamada: $("#segunda_chamada").val(),
+                    participantes: 'fulano, beltrano',
                 }
 
                 $.ajax({
@@ -165,7 +178,7 @@
                         console.log("foi");
                     },
                     error: function(data){
-                        console.log("não foi");
+                        console.log(reunioes);
                     }
                 });
             });
