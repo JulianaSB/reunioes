@@ -174,10 +174,10 @@ error_reporting(E_ALL);
                     data:  JSON.stringify(reunioes), 
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    success: function(data) {
+                    success: function(response) {
                         console.log("foi");
                     },
-                    error: function(data){
+                    error: function(response){
                         console.log(reunioes);
                     }
                 });

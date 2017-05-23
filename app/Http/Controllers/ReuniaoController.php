@@ -43,8 +43,10 @@ class ReuniaoController extends Controller
      */
     public function store(Request $request)
     {
+        $id = auth()->id();
+
         $reuniao = new Reuniao;
-        $reuniao->ID_Organizador= '2';
+        $reuniao->ID_Organizador= $id;
         $reuniao->Assunto       = $request->assunto;
         $reuniao->Tema          = $request->tema;
         $reuniao->Pautas        = $request->pautas;
