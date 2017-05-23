@@ -5,17 +5,7 @@ error_reporting(E_ALL);
 @extends('base')
 
 @section('content')
-    @if (session('success'))
-        <div class="alert alert-success">
-            <h4><i class="fa fa-check"></i> Pronto! </h4>
-            <strong>{{ session('success') }}</strong>
-        </div>
-    @elseif (session('failed'))
-        <div class="alert alert-danger">
-            <h4><i class="fa fa-warning"></i> ERRO! </h4>
-            <strong>{{ session('failed') }}</strong>
-        </div>
-    @endif
+    
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
@@ -27,7 +17,8 @@ error_reporting(E_ALL);
             <li class="active">Reuniões</li>
         </ol>
     </section>
-
+@if (Route::has('login'))
+         @if (Auth::check())
     <!-- Main content -->
     <section class="content">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -130,6 +121,12 @@ error_reporting(E_ALL);
             </div>
         </div>
     </section>
+     @else
+        <a href="{{ url('/login') }}">Login</a>
+        <a href="{{ url('/register') }}">Registrar</a>
+    @endif
+</div>
+@endif     
 @endsection
 <script
   src="https://code.jquery.com/jquery-3.2.1.js"
@@ -173,12 +170,12 @@ error_reporting(E_ALL);
                     url: "/reunioes",
                     data:  JSON.stringify(reunioes), 
                     contentType: "application/json; charset=utf-8",
-                    dataType: "json",
                     success: function(response) {
-                        console.log("foi");
+                        alert("Reunião Cadastrada");
+                        window.location.href = '/';
                     },
                     error: function(response){
-                        console.log(reunioes);
+                        
                     }
                 });
             });
