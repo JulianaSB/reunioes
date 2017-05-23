@@ -26,6 +26,7 @@
 
     <!-- Main content -->
     <section class="content">
+    <meta name="_token" content="{{ csrf_token() }}">
 
         <div class="row">
             <!-- left column -->
