@@ -132,9 +132,9 @@
                             <li>
                                 <a href="{{ url('reunioes-participa') }}" class="btn btn-default btn-lg">Reuniões que participa</a>
                             </li>
-                            <li>
+                            <!--<li>
                                 <a href="{{ url('reunioes-participa') }}" class="btn btn-default btn-lg">Convites de Reuniões</a>
-                            </li>
+                            </li>-->
                         </ul>
                     </div>
                 </div>

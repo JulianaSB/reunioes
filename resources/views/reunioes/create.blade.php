@@ -90,17 +90,17 @@
                                     <div class="form-group">
                                         <label for="opcoes">Opções</label>
                                         <br>
-                                        <input type="checkbox" id="icheck" name="icheck">Quorum obrigatório
-                                        <input type="checkbox" id="icheck" name="icheck">Segunda chamada
+                                        <input type="checkbox" id="icheck" name="quorum" value="quorum">Quorum obrigatório
+                                        <input type="checkbox" id="icheck" name="segunda_chamada" value="segunda_chamada">Segunda chamada
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="assunto">Participantes</label>
+                                        <label for="participantes">Participantes</label>
                                         <!-- <select class="form-control" id="assunto" name="assunto">
                                                 <option value="atividades_extra">Atividades Extracurriculares</option>
                                         </select><br> -->
-                                        <select id="assunto" name="assunto" class="form-control">
+                                        <select multiple id="participantes" name="participantes" class="form-control">
                                          @foreach($participa as $participantes)
                                             <option value="{{ $participantes->id }}">{{ $participantes->name }}</option>
                                           @endforeach
@@ -112,7 +112,6 @@
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Salvar</button>
                             <button class="btn btn-default back">Cancelar</button>
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         </div>
                     </div>
                 </form>
@@ -137,27 +136,36 @@
                     if ($(this).val() == '')
                         $(this).parent('.form-group').addClass('has-error');
                 });
+                
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                
                 var reunioes = {
                     assunto: $("#assunto").val(),
                     tema: $("#tema").val(),
                     pautas: $("#pautas").val(),
                     descricao: $("#descricao").val(),
-                    data_hora: $("#data_hora").val(),
+                    data_hora: $("#datepicker").val(),
                     tipo_reuniao: $("#tipo_reuniao").val(),
-                    segunda_chamada: $("#segunda_chamada").val(),
+                    opcoes: $("#opcoes").val(),
                     participantes: $("#participantes").val(),
                 }
-
 
                 $.ajax({
                     type: "POST",
                     url: "/reunioes",
-                    data: reunioes,
-                    dataType: "json",
+                    data:  JSON.stringify(reunioes), 
                     contentType: "application/json; charset=utf-8",
+                    dataType: "json",
                     success: function(data) {
-                        alert("Reunião agendada com sucesso!");
+                        console.log("foi");
                     },
+                    error: function(data){
+                        console.log("não foi");
+                    }
                 });
             });
         });

@@ -15,7 +15,7 @@ class ReuniaoController extends Controller
      */
     public function index()
     {
-        return view('reunioes.create');
+        return view('home');
     }
 
     /**
@@ -44,7 +44,6 @@ class ReuniaoController extends Controller
     public function store(Request $request)
     {
         $reuniao = new Reuniao;
-        $reuniao->ID_Organizador = '1';
         $reuniao->Assunto       = $request->assunto;
         $reuniao->Tema          = $request->tema;
         $reuniao->Pautas        = $request->pautas;
