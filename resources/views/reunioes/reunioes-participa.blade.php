@@ -42,20 +42,25 @@
                           <tr>
                             <th>Nome</th>
                             <th>Tema</th>
-                            <th>Coodernador</th>
                             <th>Data</th> 
                           </tr>
                         </thead>
                         <tbody>
-                        <tr>
+                        
                         @foreach ($itensparticipa as $itens)
+                        <tr>
                             <td>{{ $itens->Assunto }}</td>
                             <td>{{ $itens->Tema }}</td>
                             <td>{{ $itens->Data_Hora }}</td>
-                        @endforeach
+
                         </tr>
+                        @endforeach
+                        
                         </tbody>
                     </table>
+                </div>
+            </div>
+        </div>
 
 @endsection
 <script

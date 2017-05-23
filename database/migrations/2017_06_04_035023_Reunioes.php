@@ -17,7 +17,8 @@ class Reunioes extends Migration
             $table->increments('ID_Reuniao');
             $table->integer('ID_Organizador')->unsigned();
             $table->foreign('ID_Organizador')->references('id')->on('users');
-            $table->string('Assunto');
+            $table->integer('Assunto')->unsigned();
+            $table->foreign('Assunto')->references('id')->on('assunto');
             $table->string('Tema');
             $table->string('Pautas');
             $table->string('Descricao');
@@ -28,6 +29,8 @@ class Reunioes extends Migration
             $table->string('Data_Hora');
             $table->timestamps();
         });
+
+
     }
 
     /**
