@@ -50,12 +50,15 @@ error_reporting(E_ALL);
                                         <!-- <select class="form-control" id="assunto" name="assunto">
                                                 <option value="atividades_extra">Atividades Extracurriculares</option>
                                         </select><br> -->
-                                        <select id="assunto" name="assunto" class="form-control">
+                                        <select id="textBox" name="assunto" class="form-control">
                                           @foreach($itemlist as $items)
                                             <option value="{{ $items->id }}">{{ $items->assunto }}</option>
                                           @endforeach
                                         </select>
                                         
+                                        <input type="checkbox" id="checkBox" /><label>Adicionar novo assunto: </label>
+                                        
+                                        <div id="addAssunto"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -138,6 +141,17 @@ error_reporting(E_ALL);
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/i18n/jquery-ui-timepicker-addon-i18n.js"></script>
     <script>
+        jQuery(document).ready(function () {
+           $("#checkBox").click(function () {
+                $('#textBox').attr("disabled", $(this).is(":checked"));
+                var $this = $(this);
+                if ($this.is(':checked')) {
+                    $('#addAssunto').append('<input type="text" class="form-control" id="assunto" name="assunto" placeholder="Assunto Novo">');
+                }else{
+                    $('#addAssunto').find('#assunto').remove();
+                }
+           });
+        });
         $(function () {
             $('#icheck').iCheck();
             $('#datepicker').datepicker();
