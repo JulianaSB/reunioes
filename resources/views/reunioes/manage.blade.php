@@ -40,30 +40,20 @@
                         <thead>
                           <tr>
                             <th>Reunião ID</th>
-                            <th>Nome</th>
-                            <th>Coodernador</th>
+                            <th>Assunto</th>
+                            <th>Tema</th>
                             <th>Data</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Colocar mais Bebedores</td>
-                            <td>Rogério</td>
-                            <td>30/05/2017</td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>Calendário Escolar</td>
-                            <td>Rodrigo</td>
-                            <td>30/05/2017</td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>Adimintrar todo o Dinheiro muaHAHA</td>
-                            <td>Giovani</td>
-                            <td>30/05/2017</td>
-                          </tr>
+                            @foreach ($itensgerencia as $itens)
+                            <tr>
+                                <td>{{ $itens->ID_Reuniao }}</td>
+                                <td>{{ $itens->Assunto }}</td>
+                                <td>{{ $itens->Tema }}</td>
+                                <td>{{ $itens->Data_Hora }}</td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
