@@ -22,7 +22,7 @@ class ParticipaController extends Controller
     public function edicao()
         {
             
-             return view('/reunioes.edit-reuniao');
+             return view('.reunioes.edit-reuniao');
         }
     public function update(Request $request)
     {
