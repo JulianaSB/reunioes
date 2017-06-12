@@ -301,7 +301,7 @@
                   <i class="fa fa-book"></i> <span>Reuniões</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                  <li><a href="{{ url('/reunioes/create') }}"><i class="fa fa-plus"></i> <span>Adicionar reuniões</span></a></li>
+                 <!--  <li><a href="{{ url('/reunioes/create') }}"><i class="fa fa-plus"></i> <span>Adicionar reuniões</span></a></li> -->
                   <li><a href="{{ url('/reunioes') }}"><i class="fa fa-list"></i> <span>Listar reuniões</span></a></li>
               </ul>
           </li>
