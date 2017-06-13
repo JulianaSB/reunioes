@@ -40,7 +40,7 @@
                     <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th>Nome</th>
+                            <th>Editar</th>
                             <th>Tema</th>
                             <th>Data</th> 
                           </tr>
@@ -49,7 +49,7 @@
                         
                         @foreach ($itensparticipa as $itens)
                         <tr>
-                            <td>{{ $itens->Assunto }}</td>
+                            <td><a href="{{ url('/edit-reuniao') }}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
                             <td>{{ $itens->Tema }}</td>
                             <td>{{ $itens->Data_Hora }}</td>
 
