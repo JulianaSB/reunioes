@@ -32,9 +32,11 @@ error_reporting(E_ALL);
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form id="formReunioes" name="formReunioes">
+                    <form id="formReunioes" name="formReunioes" role="form" method="POST" action="/testMail">
+                     {{ csrf_field() }}
                         <div class="box-body">
                             <div class="row">
+                            
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="assunto">Assunto</label>
@@ -47,6 +49,9 @@ error_reporting(E_ALL);
                                           @endforeach
                                         </select>
                                         
+                                        <input type="checkbox" id="checkBox" /><label>Adicionar novo assunto: </label>
+                                        
+                                        <div id="addAssunto"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -135,6 +140,17 @@ error_reporting(E_ALL);
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/i18n/jquery-ui-timepicker-addon-i18n.js"></script>
     <script>
+         jQuery(document).ready(function () {
+           $("#checkBox").click(function () {
+                $('#textBox').attr("disabled", $(this).is(":checked"));
+                var $this = $(this);
+                if ($this.is(':checked')) {
+                    $('#addAssunto').append('<input type="text" class="form-control" id="assunto" name="assunto" placeholder="Assunto Novo">');
+                }else{
+                    $('#addAssunto').find('#assunto').remove();
+                }
+           });
+        });
         $(function () {
             $('#icheck').iCheck();
             $('#datepicker').datepicker();

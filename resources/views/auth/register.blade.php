@@ -65,7 +65,7 @@
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                       <!--strong>{{ $errors->first('email') }}</strong-->
-                                        <?php echo "Este endereço de email não é válido"; ?>
+                                        <strong><?php echo "Este endereço de email não é válido"; ?></strong>
                                     </span>
                                 @endif
                             </div>
@@ -122,7 +122,7 @@
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                        <!--strong>{{ $errors->first('password') }}</strong-->
-                                        <?php echo "A senha deve ter no mínimo 6 dígitos"; ?>
+                                        <strong><?php echo "A senha deve ter no mínimo 6 dígitos"; ?></strong>
                                     </span>
                                 @endif
                             </div>

@@ -18,7 +18,7 @@
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                         <!--strong>{{ $errors->first('email') }}</strong-->
-                                        <?php echo  'Dados incorretos, tente novamente ou registre-se!'?>
+                                        <strong><?php echo  'Dados incorretos, tente novamente ou registre-se!'?></strong>
                                     </span>
                                 @endif
                             </div>

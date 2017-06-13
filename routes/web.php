@@ -23,3 +23,4 @@ Route::get('/logado', 'LogadoController@index');
 Route::get('/reunioes-participa', 'ParticipaController@index');
 Route::get('/manage', 'GerenciaReuniaoController@index');
 Route::get('/update', 'ParticipaController@update');
+Route::post('/testMail', 'ConviteController@testMail');
