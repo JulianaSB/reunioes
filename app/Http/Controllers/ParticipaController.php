@@ -19,20 +19,22 @@ class ParticipaController extends Controller
          return view('reunioes.reunioes-participa', $itens);
     }
    
-    public function edicao()
+    public function edicao($reuniao)
         {
-            
-             return view('.reunioes.edit-reuniao');
+          $item= array(
+             'itensparticipa' =>
+             Reuniao::where('ID_Reuniao',$reuniao)->get());
+         return view('reunioes.edit-reuniao', $item);
         }
-    public function update(Request $request)
-    {
-        $id = $request->query('id');
-    	DB::table('reunioes')
-            ->where('ID_Reuniao', $id)
-            ->update(['Assunto' => $request->$assunto]);
-    }
-    public function destroy(Article $article)
-    {
-    	return (string) $artcile->delete();
-    }
+    // public function update(Request $request)
+    // {
+    //     $id = $request->query('id');
+    // 	DB::table('reunioes')
+    //         ->where('ID_Reuniao', $id)
+    //         ->update(['Assunto' => $request->$assunto]);
+    // }
+    // public function destroy(Article $article)
+    // {
+    // 	return (string) $artcile->delete();
+    // }
 }

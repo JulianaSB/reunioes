@@ -33,18 +33,14 @@ error_reporting(E_ALL);
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form id="formReunioes" name="formReunioes">
+                    @foreach ($itensparticipa as $items)
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="assunto">Assunto</label>
-                                        <!-- <select class="form-control" id="assunto" name="assunto">
-                                                <option value="atividades_extra">Atividades Extracurriculares</option>
-                                        </select><br> -->
-                                        <select id="textBox" name="assunto" class="form-control">
-                                            <option value="{{ $items->id }}">{{ $items->assunto }}</option>
-                                        </select>
-                                        
+                                        <input type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $items->Assunto }}">
+
                                         <input type="checkbox" id="checkBox" /><label>Adicionar novo assunto: </label>
                                         
                                         <div id="addAssunto"></div>
@@ -53,25 +49,25 @@ error_reporting(E_ALL);
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="tema">Tema</label>
-                                        <input type="tema" class="form-control required" id="tema" name="tema" placeholder="Tema" value="{{ $items->Tema }}">>
+                                        <input type="tema" class="form-control required" id="tema" name="tema" placeholder="Tema" value="{{ $items->Tema }}">
                                     </div>  
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="pautas">Pautas</label>
-                                        <input type="text" class="form-control required" id="pautas" name="pautas" placeholder="Pautas" value="{{ $items->Pautas }}">>
+                                        <input type="text" class="form-control required" id="pautas" name="pautas" placeholder="Pautas" value="{{ $items->Pautas }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="descricao">Descrição</label>
-                                        <input type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $items->Descricao }}">>
+                                        <input type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $items->Descricao }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                      <div class="form-group">
                                             <label for="data_hora">Data e Hora</label>
-                                            <input type="text" id="datepicker" name="datepicker" class="datepicker required" placeholder="Data e Hora" value="{{ $items->Data_Hora }}">>
+                                            <input type="text" id="datepicker" name="datepicker" class="datepicker required" placeholder="Data e Hora" value="{{ $items->Data_Hora }}">
                                         </div>
                                 </div>
                                 <div class="col-md-6">
@@ -100,16 +96,7 @@ error_reporting(E_ALL);
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="participantes">Participantes</label>
-                                        <!-- <select class="form-control" id="assunto" name="assunto">
-                                                <option value="atividades_extra">Atividades Extracurriculares</option>
-                                        </select><br> -->
-                                        <select multiple id="participantes" name="participantes" class="form-control">
-                                         @foreach($participa as $participantes)
-                                            <option value="{{ $participantes->id }}">{{ $participantes->name }}</option>
-                                          @endforeach
-                                        </select>
-                                        
+                                        <label for="participantes">Participantes</label>                                        
                                     </div>
                                 </div>
                         </div>
@@ -118,6 +105,7 @@ error_reporting(E_ALL);
                             <button class="btn btn-default back" href="{{ url('/reunioes-participa') }}">Cancelar</button>
                         </div>
                     </div>
+                    @endforeach
                 </form>
             </div>
         </div>
