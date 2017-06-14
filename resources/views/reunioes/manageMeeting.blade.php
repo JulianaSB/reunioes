@@ -1,6 +1,9 @@
 @extends('base')
 
 @section('content')
+
+    <link rel="stylesheet" type="text/css" href="{{asset('css/manageMeetingStile.css')}}" />
+
     @if (session('success'))
         <div class="alert alert-success">
             <h4><i class="fa fa-check"></i> Pronto! </h4>
@@ -38,18 +41,18 @@
                     <!-- form start -->
                     <table class="table table-hover">
                         <thead>
-                          <tr>
-                            <th>Reunião ID</th>
-                            <th>Assunto</th>
-                            <th>Tema</th>
-                            <th>Data</th>
-                          </tr>
+                            <tr>
+                                <th></th>
+                                <th>Reunião ID</th>
+                                <th>Tema</th>
+                                <th>Criado em</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach ($itensgerencia as $itens)
                             <tr>
+                                <td><a href="{{ url('/editManageMeeting/') .'/'. $itens->ID_Reuniao}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
                                 <td>{{ $itens->ID_Reuniao }}</td>
-                                <td>{{ $itens->Assunto }}</td>
                                 <td>{{ $itens->Tema }}</td>
                                 <td>{{ $itens->Data_Hora }}</td>
                             </tr>

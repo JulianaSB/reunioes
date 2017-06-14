@@ -16,12 +16,12 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index');
-Route::resource('reunioes', 'ReuniaoController');
-Route::get('/edit-reuniao', 'ParticipaController@edicao');
-Route::get('/welcome', 'LoginController@index');
 Route::get('/logado', 'LogadoController@index');
+Route::resource('reunioes', 'ReuniaoController');
+Route::get('/manageMeeting', 'GerenciaReuniaoController@index');
+Route::get('/editManageMeeting/{reuniao}', 'GerenciaReuniaoController@edit');
 Route::get('/reunioes-participa', 'ParticipaController@index');
-Route::get('/manage', 'GerenciaReuniaoController@index');
-Route::get('/update', 'ParticipaController@update');
-Route::get('/edit-reuniao/{reuniao}', 'ParticipaController@edicao');
-
+Route::get('/edit-reuniao/{reuniao}', 'ParticipaController@edit');
+// Route::get('/update', 'ParticipaController@update');
+// Route::get('/edit-reuniao', 'ParticipaController@edit');
+// Route::get('/welcome', 'LoginController@index');
