@@ -146,14 +146,14 @@
                              <a href="https://www.facebook.com/ifspguarulhos/"><span class="network-name">Facebook IFSP</span></a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted small">Érika - Jéssica - Juliana - Morgana - Veronica | Reuniões &copy; 2017. All Rights Reserved</p>
+                    <p class="copyright text-muted small">Érika - Jéssica - Juliana - Morgana - Veronica | Reuniões &copy; 2017. Todos os direitos reservados.</p>
                 </div>
             </div>
         </div>
     </footer>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-
+    <script src="js/jquery.maskedinput.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 </body>

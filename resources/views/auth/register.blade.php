@@ -2,37 +2,6 @@
 
 @section('content')
 
- <script>
-    function somenteNumeros(num) {
-        var er = /[^0-9.]/;
-        er.lastIndex = 0;
-        var campo = num;
-        if (er.test(campo.value)) {
-          campo.value = "";
-        }
-    }
-   
-    function txtBoxFormat(evtKeyPress) {
-        var i, nCount, sValue, fldLen, mskLen,bolMask, sCod, nTecla;
-
-        if(document.all) { // Internet Explorer
-            nTecla = evtKeyPress.keyCode;
-        } else if(document.layers) { // Nestcape
-            nTecla = evtKeyPress.which;
-        } else {
-            nTecla = evtKeyPress.which;
-            if (nTecla == 8) {
-                return true;
-            }
-        }
-        if (nTecla != 8)
-          return ((nTecla <= 47) || (nTecla >= 58)); 
-        else 
-          return true;
-    }
-
- </script>
- 
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -65,7 +34,7 @@
                                 @if ($errors->has('email'))
                                     <span class="help-block">
                                       <!--strong>{{ $errors->first('email') }}</strong-->
-                                        <?php echo "Este endereço de email não é válido"; ?>
+                                       <strong><?php echo "Este endereço de email não é válido"; ?></strong>
                                     </span>
                                 @endif
                             </div>
@@ -90,12 +59,6 @@
 
                             <div class="col-md-6">
                                 <input id="setor" type="text" class="form-control" onkeypress="return txtBoxFormat(event);" name="setor" value="{{ old('setor') }}" required autofocus>
-
-                                @if ($errors->has('setor'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('setor') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
@@ -105,11 +68,6 @@
                             <div class="col-md-6">
                                 <input id="cpf" type="text" onkeyup="somenteNumeros(this);" class="form-control" name="cpf" maxlength="11" value="{{ old('cpf') }}" required autofocus>
 
-                                @if ($errors->has('cpf'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('cpf') }}</strong>
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
@@ -122,7 +80,7 @@
                                 @if ($errors->has('password'))
                                     <span class="help-block">
                                        <!--strong>{{ $errors->first('password') }}</strong-->
-                                        <?php echo "A senha deve ter no mínimo 6 dígitos"; ?>
+                                        <strong><?php echo "A senha deve ter no mínimo 6 dígitos"; ?></strong>
                                     </span>
                                 @endif
                             </div>
@@ -150,3 +108,38 @@
     </div>
 </div>
 @endsection
+
+ <script>
+    function somenteNumeros(num) {
+        var er = /[^0-9.]/;
+        er.lastIndex = 0;
+        var campo = num;
+        if (er.test(campo.value)) {
+          campo.value = "";
+        }
+    }
+   
+    function txtBoxFormat(evtKeyPress) {
+        var i, nCount, sValue, fldLen, mskLen,bolMask, sCod, nTecla;
+
+        if(document.all) { // Internet Explorer
+            nTecla = evtKeyPress.keyCode;
+        } else if(document.layers) { // Nestcape
+            nTecla = evtKeyPress.which;
+        } else {
+            nTecla = evtKeyPress.which;
+            if (nTecla == 8) {
+                return true;
+            }
+        }
+        if (nTecla != 8)
+          return ((nTecla <= 47) || (nTecla >= 58)); 
+        else 
+          return true;
+    }
+
+    jQuery(document).ready(function () {
+        $ ( '#CampoCpf' ) .mask ( '999.999.999-99' , { reverse: true });
+        $ ( '#ra' ) .mask ( '999999-9');
+});
+ </script>
