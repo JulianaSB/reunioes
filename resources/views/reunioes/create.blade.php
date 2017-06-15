@@ -40,9 +40,6 @@ error_reporting(E_ALL);
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="assunto">Assunto</label>
-                                        <!-- <select class="form-control" id="assunto" name="assunto">
-                                                <option value="atividades_extra">Atividades Extracurriculares</option>
-                                        </select><br> -->
                                         <select id="assunto" name="assunto" class="form-control">
                                           @foreach($itemlist as $items)
                                             <option value="{{ $items->id }}">{{ $items->assunto }}</option>
@@ -72,12 +69,17 @@ error_reporting(E_ALL);
                                         <input type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição">
                                     </div>
                                 </div>
+
                                 <div class="col-md-6">
-                                     <div class="form-group">
-                                            <label for="data_hora">Data e Hora</label>
-                                            <input type="text" id="datepicker" name="datepicker" class="datepicker required" placeholder="Data e Hora">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="date">Data e Hora</label>
+                                        <div class="input-group">
+                                        <input name="date" type="text" id="datepicker" class="form-control form-date">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                      </div>
+                                    </div>
                                 </div>
+                               
                                 <div class="col-md-6">
                                      <div class="form-group">
                                             <label for="tipo_reuniao">Tipo de Reunião</label>
@@ -88,10 +90,11 @@ error_reporting(E_ALL);
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="quorum">Quorum?</label>
+                                        <label for="quorum">Quorum</label>
                                         <br>
-                                        <input type="radio" id="quorum" name="quorum" value="1">Sim
-                                        <input type="radio" id="quorum" name="quorum" value="0"> Não
+                                        <input type="checkbox" id="quorum" /><label>Adicionar Quorum? </label>
+                                        
+                                        <div id="addQuorum"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -133,14 +136,17 @@ error_reporting(E_ALL);
 </div>
 @endif     
 @endsection
-<script
-  src="https://code.jquery.com/jquery-3.2.1.js"
-  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-  crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/i18n/jquery-ui-timepicker-addon-i18n.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/build/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
+
     <script>
-         jQuery(document).ready(function () {
+        $(function () {
            $("#checkBox").click(function () {
                 $('#textBox').attr("disabled", $(this).is(":checked"));
                 var $this = $(this);
@@ -151,9 +157,23 @@ error_reporting(E_ALL);
                 }
            });
         });
+
+        $(function () {
+           $("#quorum").click(function () {
+                $('#textBox').attr("disabled", $(this).is(":checked"));
+                var $this = $(this);
+                if ($this.is(':checked')) {
+                    $('#addQuorum').append('<input type="number" class="form-control" id="quorum" name="quorum" placeholder="Quorum Novo">');
+                }else{
+                    $('#addQuorum').find('#quorum').remove();
+                }
+           });
+        });
+
         $(function () {
             $('#icheck').iCheck();
-            $('#datepicker').datepicker();
+            $('#datepicker').datetimepicker();
+            
             $('#formReunioes').on('submit', function(e){
                 e.preventDefault();
                 $(".required").parent('.form-group').removeClass('has-error');

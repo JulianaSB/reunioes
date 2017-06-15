@@ -45,6 +45,8 @@ class ReuniaoController extends Controller
     {
         $id = auth()->id();
 
+        dd($request->quorum);
+
         $reuniao = new Reuniao;
         $reuniao->ID_Organizador= $id;
         $reuniao->Assunto       = $request->assunto;
