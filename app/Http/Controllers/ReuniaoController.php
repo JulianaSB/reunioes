@@ -44,9 +44,7 @@ class ReuniaoController extends Controller
     public function store(Request $request)
     {
         $id = auth()->id();
-
-        dd($request->quorum);
-
+        $request->participantes = implode(",",$request->participantes);
         $reuniao = new Reuniao;
         $reuniao->ID_Organizador= $id;
         $reuniao->Assunto       = $request->assunto;

@@ -71,13 +71,10 @@ error_reporting(E_ALL);
                                 </div>
 
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="date">Data e Hora</label>
-                                        <div class="input-group">
-                                        <input name="date" type="text" id="datepicker" class="form-control form-date">
-                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                      </div>
-                                    </div>
+                                     <div class="form-group">
+                                            <label for="data_hora">Data e Hora</label>
+                                            <input type="text" id="datepicker" name="datepicker" class="datepicker required" placeholder="Data e Hora">
+                                        </div>
                                 </div>
                                
                                 <div class="col-md-6">
@@ -108,9 +105,6 @@ error_reporting(E_ALL);
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="participantes">Participantes</label>
-                                        <!-- <select class="form-control" id="assunto" name="assunto">
-                                                <option value="atividades_extra">Atividades Extracurriculares</option>
-                                        </select><br> -->
                                         <select multiple id="participantes" name="participantes" class="form-control">
                                          @foreach($participa as $participantes)
                                             <option value="{{ $participantes->id }}">{{ $participantes->name }}</option>
@@ -138,12 +132,7 @@ error_reporting(E_ALL);
 @endsection
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script src="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/src/js/bootstrap-datetimepicker.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="http://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/a549aa8780dbda16f6cff545aeabc3d71073911e/build/css/bootstrap-datetimepicker.css" rel="stylesheet"/>
+
 
     <script>
         $(function () {
@@ -172,7 +161,7 @@ error_reporting(E_ALL);
 
         $(function () {
             $('#icheck').iCheck();
-            $('#datepicker').datetimepicker();
+            $('#datepicker').datepicker();
             
             $('#formReunioes').on('submit', function(e){
                 e.preventDefault();
@@ -198,17 +187,17 @@ error_reporting(E_ALL);
                     tipo_reuniao: $("#tipo_reuniao").val(),
                     quorum: $("#quorum").val(),
                     segunda_chamada: $("#segunda_chamada").val(),
-                    participantes: 'fulano, beltrano',
+                    participantes: $("#participantes").val(),
                 }
 
                 $.ajax({
                     type: "POST",
                     url: "/reunioes",
-                    data:  JSON.stringify(reunioes), 
+                    data:  JSON.stringify(reunioes) , 
                     contentType: "application/json; charset=utf-8",
                     success: function(response) {
                         alert("Reunião Cadastrada");
-                        window.location.href = '/';
+                        window.location.href = '/logado';
                     },
                     error: function(response){
                         
