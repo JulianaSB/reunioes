@@ -89,7 +89,7 @@ error_reporting(E_ALL);
                                     <div class="form-group">
                                         <label for="quorum">Quorum</label>
                                         <br>
-                                        <input type="checkbox" id="quorum" /><label>Adicionar Quorum? </label>
+                                        <input type="checkbox" id="clickQuorum" /><label>Adicionar Quorum? </label>
                                         
                                         <div id="addQuorum"></div>
                                     </div>
@@ -98,7 +98,7 @@ error_reporting(E_ALL);
                                     <div class="form-group">
                                         <label for="segunda_chamada">Segunda Chamada?</label>
                                         <br>
-                                        <input type="radio" id="segunda_chamada" name="segunda_chamada" value="1">Sim
+                                        <input type="radio" id="segunda_chamada" name="segunda_chamada" value="1"> Sim
                                         <input type="radio" id="segunda_chamada" name="segunda_chamada" value="0"> Não
                                     </div>
                                 </div>
@@ -148,7 +148,7 @@ error_reporting(E_ALL);
         });
 
         $(function () {
-           $("#quorum").click(function () {
+           $("#clickQuorum").click(function () {
                 $('#textBox').attr("disabled", $(this).is(":checked"));
                 var $this = $(this);
                 if ($this.is(':checked')) {
@@ -186,7 +186,7 @@ error_reporting(E_ALL);
                     data_hora: $("#datepicker").val(),
                     tipo_reuniao: $("#tipo_reuniao").val(),
                     quorum: $("#quorum").val(),
-                    segunda_chamada: $("#segunda_chamada").val(),
+                    segunda_chamada: $("#segunda_chamada:checked").val(),
                     participantes: $("#participantes").val(),
                 }
 
@@ -196,8 +196,7 @@ error_reporting(E_ALL);
                     data:  JSON.stringify(reunioes) , 
                     contentType: "application/json; charset=utf-8",
                     success: function(response) {
-                        alert("Reunião Cadastrada");
-                        window.location.href = '/logado';
+                        
                     },
                     error: function(response){
                         
