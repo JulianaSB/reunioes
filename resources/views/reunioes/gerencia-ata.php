@@ -1,9 +1,6 @@
 @extends('base')
 
 @section('content')
-
-    <link rel="stylesheet" type="text/css" href="{{asset('css/manageMeetingStile.css')}}" />
-
     @if (session('success'))
         <div class="alert alert-success">
             <h4><i class="fa fa-check"></i> Pronto! </h4>
@@ -18,11 +15,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Reuniões Criadas
+            Reuniões
+            <small>Você está participando</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Reuniões Criadas</li>
+            <li class="active">Reuniões</li>
         </ol>
     </section>
 
@@ -35,30 +33,29 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Reuniões Criadas</h3>
+                        <h3 class="box-title">Reuniões que participa</h3>
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
                     <table class="table table-hover">
                         <thead>
-                            <tr>
-                                <th></th>
-                                <th>Reunião ID</th>
-                                <th>Tema</th>
-                                <th>Criado em</th>
-                                <th>Ata</th>
-                            </tr>
+                          <tr>
+                            <th>Editar</th>
+                            <th>Tema</th>
+                            <th>Data</th> 
+                          </tr>
                         </thead>
                         <tbody>
-                            @foreach ($itensgerencia as $itens)
-                            <tr>
-                                <td><a href="{{ url('/editManageMeeting/') .'/'. $itens->ID_Reuniao}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
-                                <td>{{ $itens->ID_Reuniao }}</td>
-                                <td>{{ $itens->Tema }}</td>
-                                <td>{{ $itens->Data_Hora }}</td>
-                                <td><a href="{{ url('/gerencia-ata/') .'/'. $itens->ID_Reuniao}}"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a></td>
-                            </tr>
-                            @endforeach
+                        
+                        @foreach ($itensparticipa as $itens)
+                        <tr>
+                            <td><a href="{{ url('/edit-reuniao/') .'/'. $itens->ID_Reuniao}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                            <td>{{ $itens->Tema }}</td>
+                            <td>{{ $itens->Data_Hora }}</td>
+
+                        </tr>
+                        @endforeach
+                        
                         </tbody>
                     </table>
                 </div>

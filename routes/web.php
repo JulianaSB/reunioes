@@ -22,6 +22,7 @@ Route::get('/manageMeeting', 'GerenciaReuniaoController@index');
 Route::get('/editManageMeeting/{reuniao}', 'GerenciaReuniaoController@edit');
 Route::get('/reunioes-participa', 'ParticipaController@index');
 Route::get('/edit-reuniao/{reuniao}', 'ParticipaController@edit');
+Route::get('/gerencia-ata/{reuniao}', 'GerenciaReuniaoController@addata');
 // Route::get('/update', 'ParticipaController@update');
 // Route::get('/edit-reuniao', 'ParticipaController@edit');
 // Route::get('/welcome', 'LoginController@index');
