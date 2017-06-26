@@ -31,24 +31,31 @@ error_reporting(E_ALL);
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form id="formReunioes" name="formReunioes">
+                    <form id="formReunioes" name="formReunioes" method="POST" action="/testMail">
                     @foreach ($ata as $items)
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="comment">Texto Ata de Reunião:</label>
-                                        <textarea class="form-control" rows="5" cols="70" id="comment"></textarea>
                                     </div>
                                     <div class="form-group">
-                                        <label for="assunto">Texto ata</label>
-                                        <input type="textarea" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $items->ata_Reuniao }}">
+                                        <textarea cols="10" rows="20" charswidth="23" class="form-control required printMe" name="text_body" style="resize:vertical" id="print" name="descricao">{{ $items->ata_Reuniao }}</textarea>
+
+                                        <!-- <input type="textarea" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $items->ata_Reuniao }}"> -->
                                     </div>
                                 </div>
                             </div>
                         </div>
                     @endforeach
                 </form>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  Launch demo modal
+                </button>
+
+                <a data-target="#myModal" role="button" class="btn" data-toggle="modal" class="printmodal">Launch modal</a>
+                <input type="button" onclick="cont();" value="Imprimir Div separadamente">
+
             </div>
         </div>
     </section>
@@ -59,6 +66,74 @@ error_reporting(E_ALL);
 </div>
 @endif     
 @endsection
+
+<div id="" class="conteudo">
+// conteúdo a ser impresso pode ser um form ou um table.
+</div>
+
+<div class="modal fade hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+         <h3 id="myModalLabel">Modal to print</h3>
+
+    </div>
+    <div class="modal-body">
+        <p>Print Me</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary" id="printButton">Print</button>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="content container">
+            @foreach ($ata as $items)
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                {{ $items->ata_Reuniao }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            @endforeach
+        </div>
+
+            @foreach ($ata as $items)
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <textarea cols="10" rows="10" charswidth="23" class="form-control" name="text_body" style="resize:vertical" id="descricao" name="descricao">{{ $items->ata_Reuniao }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+      </div>
+      <div class="modal-footer">
+      <button class="btn btn-primary" id="printButton">Print</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Imprimir</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
@@ -66,7 +141,19 @@ error_reporting(E_ALL);
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/i18n/jquery-ui-timepicker-addon-i18n.js"></script>
     <script>
-        jQuery(document).ready(function () {
+        function cont(){
+           var conteudo = document.getElementById('print').innerHTML;
+           tela_impressao = window.open('about:blank');
+           tela_impressao.document.write(conteudo);
+           tela_impressao.window.print();
+           tela_impressao.window.close();
+        }
+
+            $('#printButton').on('click', function () {
+                    window.print();
+            });
+
+
            $("#checkBox").click(function () {
                 $('#textBox').attr("disabled", $(this).is(":checked"));
                 var $this = $(this);
@@ -75,43 +162,5 @@ error_reporting(E_ALL);
                 }else{
                     $('#addAssunto').find('#assunto').remove();
                 }
-           });
-        });
-        $(function () {
-            $('#icheck').iCheck();
-            $('#datepicker').datepicker();
-            $('#formReunioes').on('submit', function(e){
-                e.preventDefault();
-                $(".required").parent('.form-group').removeClass('has-error');
-                $(".required").each(function(){
-                    if ($(this).val() == '')
-                        $(this).parent('.form-group').addClass('has-error');
-                });
-                
-                $.ajaxSetup({
-                    headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                
-                var reunioes = {
-                    assunto: $("#assunto").val(),
-                    pautas: $("#pautas").val(),
-                }
-
-                $.ajax({
-                    type: "POST",
-                    url: "/update",
-                    data:  JSON.stringify(reunioes), 
-                    contentType: "application/json; charset=utf-8",
-                    success: function(response) {
-                        alert("Reunião Alterada!");
-                        window.location.href = '/';
-                    },
-                    error: function(response){
-                        
-                    }
-                });
-            });
-        });
+           });  
     </script>
