@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\GerenciaReuniao;
 use App\Reuniao;
-use DB;
+use App\Ata;
+use App\Assunto;
 
 class GerenciaReuniaoController extends Controller {
     
@@ -31,20 +32,27 @@ class GerenciaReuniaoController extends Controller {
         $id = auth()->id();
         $ataDados = array(
             'ata' =>
-            DB::table('ata')->where('reuniao_id', $reuniao)->first()
+            Ata::where('reuniao_id', $reuniao)->get()
         );
-        $reuniaoDados = array(
+        $reuniaoDados= array(
             'reuniao' =>
             Reuniao::where('ID_Reuniao',$reuniao)->get()
         );
-        $total = count(($reuniaoDados));
+
+        $total = count(($ataDados));
         if($total > 0){
             $ataDados = $ataDados;
         }else{
-            $ataDados = "vazio";
+            $ataDados = "";
         }
-        var_dump($ataDados);
-        die();
-        return view('gerencia-ata', $reuniaoDados, $ataDados);
+        $id = 1;
+        $assunto = array(
+            'assuntos' =>
+            Assunto::where('id', $id)->get()
+        );
+        
+        // var_dump($assunto);
+        // die();
+        return view('reunioes.gerencia-ata', $reuniaoDados, $ataDados, $assunto);
     }
 }
