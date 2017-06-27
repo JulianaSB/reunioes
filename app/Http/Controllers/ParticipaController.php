@@ -7,6 +7,7 @@ use App\ParticipaModel;
 use DB;
 use App\Reuniao;
 
+
 class ParticipaController extends Controller
 {
     public function index()
@@ -26,14 +27,10 @@ class ParticipaController extends Controller
              Reuniao::where('ID_Reuniao',$reuniao)->get());
          return view('reunioes.edit-reuniao', $item);
         }
-    public function update($reuniao)
+    public function update(Request $request, $reuniao)
      {
      	DB::table('reunioes')
              ->where('ID_Reuniao', $reuniao)
-             ->update(['Pauta' => $request->$pauta]);
+             ->update(['Pautas' => $request->pauta]);
      }
-    // public function destroy(Article $article)
-    // {
-    // 	return (string) $artcile->delete();
-    // }
 }

@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Reuniões</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="/css/vendor.css">
@@ -299,7 +300,7 @@
               </a>
               <ul class="treeview-menu">
                  <!--  <li><a href="{{ url('/reunioes/create') }}"><i class="fa fa-plus"></i> <span>Adicionar reuniões</span></a></li> -->
-                  <li><a href="{{ url('/reunioes') }}"><i class="fa fa-list"></i> <span>Listar reuniões</span></a></li>
+                  <li><a href="{{ url('/logado') }}"><i class="fa fa-list"></i> <span>Listar reuniões</span></a></li>
               </ul>
           </li>
         

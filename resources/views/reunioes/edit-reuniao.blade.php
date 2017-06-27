@@ -23,51 +23,52 @@ error_reporting(E_ALL);
     <section class="content">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="row">
-            <!-- left column -->
             <div class="col-md-12">
-                <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Reuniões</h3>
                     </div>
-                    <!-- /.box-header -->
-                    <!-- form start -->
-                    <form id="formReunioes" name="formReunioes">
+                    <form id="formReunioesEdit" name="formReunioesEdit">
+                    {{ csrf_field() }}
                     @foreach ($itensparticipa as $items)
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="assunto">Assunto</label>
-                                        <input type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $items->Assunto }}">
-
-                                        <input type="checkbox" id="checkBox" /><label>Adicionar novo assunto: </label>
-                                        
-                                        <div id="addAssunto"></div>
+                                        <input disabled type="assunto" class="form-control required" id="assunto" name="assunto" placeholder="Assunto" value="{{ $items->Tema }}">                                   
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="tema">Tema</label>
-                                        <input type="tema" class="form-control required" id="tema" name="tema" placeholder="Tema" value="{{ $items->Tema }}">
+                                        <input disabled type="tema" class="form-control required" id="tema" name="tema" placeholder="Tema" value="{{ $items->Tema }}">
                                     </div>  
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="pautas">Pautas</label>
-                                        <input type="text" class="form-control required" id="pautas" name="pautas" placeholder="Pautas" value="{{ $items->Pautas }}">
+                                        <input disabled type="text" class="form-control required" id="pautas" name="pautas" placeholder="Pautas" value="{{ $items->Pautas }}">
+                                        <input type="checkbox" id="checkBox" /><label>Adicionar nova Pauta: </label>                                       
+                                        <div id="addPauta"></div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="descricao">Descrição</label>
-                                        <input type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $items->Descricao }}">
+                                        <input disabled type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $items->Descricao }}">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                      <div class="form-group">
                                             <label for="data_hora">Data e Hora</label>
-                                            <input type="text" id="datepicker" name="datepicker" class="datepicker required" placeholder="Data e Hora" value="{{ $items->Data_Hora }}">
+                                            <input disabled type="text" id="datepicker" name="datepicker" class="datepicker required" placeholder="Data e Hora" value="{{ $items->Data_Hora }}">
                                         </div>
                                 </div>
                                 <div class="col-md-6">
@@ -78,28 +79,10 @@ error_reporting(E_ALL);
                                             </select>
                                         </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="quorum">Quorum?</label>
-                                        <br>
-                                        <input type="radio" id="quorum" name="quorum" value="1">Sim
-                                        <input type="radio" id="quorum" name="quorum" value="0"> Não
-                                    </div>
+                                <div>
+                                    <input type="hidden" name="id" value="{{$items->ID_Reuniao}}">
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="segunda_chamada">Segunda Chamada?</label>
-                                        <br>
-                                        <input type="radio" id="segunda_chamada" name="segunda_chamada" value="1">Sim
-                                        <input type="radio" id="segunda_chamada" name="segunda_chamada" value="0"> Não
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="participantes">Participantes</label>                                        
-                                    </div>
-                                </div>
-                        </div>
+                            </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Salvar</button>
                             <button class="btn btn-default back" href="{{ url('/reunioes-participa') }}">Cancelar</button>
@@ -129,42 +112,31 @@ error_reporting(E_ALL);
                 $('#textBox').attr("disabled", $(this).is(":checked"));
                 var $this = $(this);
                 if ($this.is(':checked')) {
-                    $('#addAssunto').append('<input type="text" class="form-control" id="assunto" name="assunto" placeholder="Assunto Novo">');
+                    $('#addPauta').append('<input type="text" class="form-control" id="pauta" name="pauta" placeholder="Nova Pauta">');
                 }else{
-                    $('#addAssunto').find('#assunto').remove();
+                    $('#addPauta').find('#pauta').remove();
                 }
            });
         });
         $(function () {
-            $('#icheck').iCheck();
-            $('#datepicker').datepicker();
-            $('#formReunioes').on('submit', function(e){
-                e.preventDefault();
-                $(".required").parent('.form-group').removeClass('has-error');
-                $(".required").each(function(){
-                    if ($(this).val() == '')
-                        $(this).parent('.form-group').addClass('has-error');
-                });
-                
+            $('#formReunioesEdit').on('submit', function(e){
+                e.preventDefault()                
                 $.ajaxSetup({
                     headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                
-                var reunioes = {
-                    assunto: $("#assunto").val(),
-                    pautas: $("#pautas").val(),
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')                    }
+                });                
+                var reunioesEdit = {
+                    pauta: $("#pauta").val(),
                 }
 
                 $.ajax({
-                    type: "POST",
-                    url: "/update",
-                    data:  JSON.stringify(reunioes), 
+                    type: "PUT",
+                    url: "/reunioesParticipa/{{$items->ID_Reuniao}}",
+                    data:  JSON.stringify(reunioesEdit), 
                     contentType: "application/json; charset=utf-8",
                     success: function(response) {
-                        alert("Reunião Alterada!");
-                        window.location.href = '/';
+                        alert(response);
+                        // window.location.href = '/';
                     },
                     error: function(response){
                         

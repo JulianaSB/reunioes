@@ -25,7 +25,8 @@ error_reporting(E_ALL);
                     <div class="box-header with-border">
                         <h3 class="box-title">Reuniões</h3>
                     </div>
-                    <form id="formReunioes" name="formReunioes">
+                    <form id="formReunioesEdit" name="formReunioesEdit">
+                    {{ csrf_field() }}
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
@@ -34,12 +35,16 @@ error_reporting(E_ALL);
                                         <input disabled type="assunto" class="form-control required" id="assunto" name="assunto" placeholder="Assunto" value="{{ $items->Tema }}">                                   
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="tema">Tema</label>
                                         <input disabled type="tema" class="form-control required" id="tema" name="tema" placeholder="Tema" value="{{ $items->Tema }}">
                                     </div>  
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="pautas">Pautas</label>
@@ -54,6 +59,8 @@ error_reporting(E_ALL);
                                         <input disabled type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $items->Descricao }}">
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                      <div class="form-group">
                                             <label for="data_hora">Data e Hora</label>
@@ -68,6 +75,8 @@ error_reporting(E_ALL);
                                             </select>
                                         </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="quorum">Quorum?</label>
@@ -84,6 +93,8 @@ error_reporting(E_ALL);
                                         <input type="radio" id="segunda_chamada" name="segunda_chamada" value="0"> Não
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="participantes">Participantes</label>
@@ -94,6 +105,7 @@ error_reporting(E_ALL);
                                         </select>
                                    </div>
                                 </div>
+                            </div>
                             </div>
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Salvar</button>
@@ -131,7 +143,7 @@ error_reporting(E_ALL);
         });
         $(function () {
             $('#icheck').iCheck();
-            $('#formReunioes').on('submit', function(e){                
+            $('#formReunioesEdit').on('submit', function(e){                
                 $.ajaxSetup({
                     headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -143,7 +155,7 @@ error_reporting(E_ALL);
 
                 $.ajax({
                     type: "POST",
-                    url: "/update",
+                    url: "/reunioes/update",
                     data:  JSON.stringify(reunioes), 
                     contentType: "application/json; charset=utf-8",
                     success: function(response) {
