@@ -807,7 +807,6 @@ class ComposerStaticInitc687f9c24cc8171c9ce34911eb09351f
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
-        'Usuarios' => __DIR__ . '/../..' . '/database/migrations/2017_04_02_232618_Usuarios.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
