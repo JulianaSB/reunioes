@@ -61,7 +61,7 @@
                                 <td><center><a href="{{ url('/viewMeeting/') .'/'. $itens->ID_Reuniao}}"><i class="fa fa-eye" aria-hidden="true"></i></a></center></td>
                                 <td><center><a href="{{ url('/editManageMeeting/') .'/'. $itens->ID_Reuniao}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></center></td>
                                 <td><center>
-                                <form method="DELETE" action="{{ url('/deleteManageMeeting/') . '/' . $itens->ID_Reuniao}}">
+                                <form method="DELETE" action="{{ url('/deleteMeeting/') . '/' . $itens->ID_Reuniao}}">
                                     <button><i class="fa fa-times" aria-hidden="true"></i></button>
                                 </form>
                                 </center></td>

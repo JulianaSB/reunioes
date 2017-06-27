@@ -21,7 +21,7 @@ Route::resource('reunioes', 'ReuniaoController');
 Route::get('/manageMeeting', 'GerenciaReuniaoController@index');
 Route::get('/viewMeeting/{reuniao}', 'GerenciaReuniaoController@view');
 Route::get('/editManageMeeting/{reuniao}', 'GerenciaReuniaoController@edit');
-Route::get('/deleteManageMeeting/{reuniao}', 'GerenciaReuniaoController@destroy');
+Route::get('/deleteMeeting/{reuniao}', 'GerenciaReuniaoController@destroy');
 Route::resource('reunioesGerencia', 'GerenciaReuniaoController');
 Route::get('/reunioes-participa', 'ParticipaController@index');
 Route::get('/edit-reuniao/{reuniao}', 'ParticipaController@edit');
