@@ -33,13 +33,14 @@ error_reporting(E_ALL);
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form id="formReunioes" name="formReunioes">
-                    @foreach ($itensparticipa as $items)
+                    {{ csrf_field() }}
+                    @foreach ($itensparticipa as $itens)
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="assunto">Assunto</label>
-                                        <input type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $items->Assunto }}">
+                                        <input type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $itens->Assunto }}">
 
                                         <input type="checkbox" id="checkBox" /><label>Adicionar novo assunto: </label>
                                         
@@ -49,25 +50,25 @@ error_reporting(E_ALL);
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="tema">Tema</label>
-                                        <input type="tema" class="form-control required" id="tema" name="tema" placeholder="Tema" value="{{ $items->Tema }}">
+                                        <input type="tema" class="form-control required" id="tema" name="tema" placeholder="Tema" value="{{ $itens->Tema }}">
                                     </div>  
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="pautas">Pautas</label>
-                                        <input type="text" class="form-control required" id="pautas" name="pautas" placeholder="Pautas" value="{{ $items->Pautas }}">
+                                        <input type="text" class="form-control required" id="pautas" name="pautas" placeholder="Pautas" value="{{ $itens->Pautas }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="descricao">Descrição</label>
-                                        <input type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $items->Descricao }}">
+                                        <input type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $itens->Descricao }}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                      <div class="form-group">
                                             <label for="data_hora">Data e Hora</label>
-                                            <input type="text" id="datepicker" name="datepicker" class="datepicker required" placeholder="Data e Hora" value="{{ $items->Data_Hora }}">
+                                            <input type="text" id="datepicker" name="datepicker" class="datepicker required" placeholder="Data e Hora" value="{{ $itens->Data_Hora }}">
                                         </div>
                                 </div>
                                 <div class="col-md-6">
@@ -175,4 +176,50 @@ error_reporting(E_ALL);
             });
         });
     });
+
+    $(function () {
+            $('#icheck').iCheck();
+            $('#datepicker').datepicker();
+            
+            $('#formReunioes').on('submit', function(e){
+                e.preventDefault();
+                $(".required").parent('.form-group').removeClass('has-error');
+                $(".required").each(function(){
+                    if ($(this).val() == '')
+                        $(this).parent('.form-group').addClass('has-error');
+                });
+                
+                $.ajaxSetup({
+                    headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                
+                var reunioes = {
+                    _token: "{{ csrf_token() }}",
+                    assunto: $("#assunto").val(),
+                    tema: $("#tema").val(),
+                    pautas: $("#pautas").val(),
+                    descricao: $("#descricao").val(),
+                    data_hora: $("#datepicker").val(),
+                    tipo_reuniao: $("#tipo_reuniao").val(),
+                    quorum: $("#quorum").val(),
+                    segunda_chamada: $("#segunda_chamada:checked").val(),
+                    participantes: $("#participantes").val(),
+                }
+
+                $.ajax({
+                    type: "POST",
+                    url: "/reunioes",
+                    data:  JSON.stringify(reunioes) , 
+                    contentType: "application/json; charset=utf-8",
+                    success: function(response) {
+                        
+                    },
+                    error: function(response){
+                        
+                    }
+                });
+            });
+        });
 </script>

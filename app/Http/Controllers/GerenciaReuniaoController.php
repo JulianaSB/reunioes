@@ -21,11 +21,11 @@ class GerenciaReuniaoController extends Controller {
     }
 
     public function edit ($reuniao) {
-        $item= array(
+        $item = array(
             'itensparticipa' =>
             Reuniao::where('ID_Reuniao',$reuniao)->get()
         );
-        return view('reunioes.edit-reuniao', $item);
+        return view('reunioes.editManageMeeting', $item);
     }
 
     public function addata ($reuniao) {
