@@ -136,8 +136,4 @@
           return true;
     }
 
-    jQuery(document).ready(function () {
-        $ ( '#CampoCpf' ) .mask ( '999.999.999-99' , { reverse: true });
-        $ ( '#ra' ) .mask ( '999999-9');
-});
  </script>
