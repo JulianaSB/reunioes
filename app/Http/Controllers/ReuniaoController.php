@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Reuniao;
 use Illuminate\Http\Request;
 use DB;
+use Mail;
+use App\Mail\Convite;
 
 class ReuniaoController extends Controller
 {
@@ -57,6 +59,19 @@ class ReuniaoController extends Controller
         $reuniao->Segunda_Chamada = $request->segunda_chamada;
         $reuniao->Participantes = $request->participantes;
         $reuniao->save();
+    }
+
+
+    public function testMail(Request $request)
+    {
+      $id = $request->participantes;                        
+      $convidado = DB::table('users')->where('id', $id)->first();
+
+      $mail=$convidado->email;   
+       
+      Mail::to($mail)->send(new Convite($request));
+
+      return redirect('/logado');
     }
     /**
      * Display the specified resource.

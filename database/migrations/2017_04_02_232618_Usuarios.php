@@ -32,6 +32,6 @@ class Usuarios extends Migration
      */
     public function down()
     {
-        Schema::drop('Usuarios');
+        Schema::dropIfExists('Usuarios');
     }
 }

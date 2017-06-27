@@ -24,4 +24,4 @@ Route::get('/reunioes-participa', 'ParticipaController@index');
 Route::get('/edit-reuniao/{reuniao}', 'ParticipaController@edit');
 Route::get('/gerencia-ata/{reuniao}', 'GerenciaReuniaoController@addata');
 Route::get('/update', 'ParticipaController@update');
-Route::post('/testMail', 'ConviteController@testMail');
+Route::post('reunioes', 'ReuniaoController@testMail');

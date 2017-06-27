@@ -17,14 +17,13 @@ class Reunioes extends Migration
             $table->increments('ID_Reuniao');
             $table->integer('ID_Organizador')->unsigned();
             $table->foreign('ID_Organizador')->references('id')->on('users');
-            // $table->increments('Assunto');
             $table->integer('Assunto')->unsigned();
             $table->foreign('Assunto')->references('id')->on('assunto');
             $table->string('Tema');
             $table->string('Pautas');
             $table->string('Descricao');
             $table->string('Tipo_Reuniao');
-            $table->tinyInteger('Quorum');
+            $table->tinyInteger('Quorum')->nullable();
             $table->tinyInteger('Segunda_Chamada');
             $table->string('Participantes');
             $table->string('Data_Hora');
@@ -40,6 +39,6 @@ class Reunioes extends Migration
      */
     public function down()
     {
-        Schema::drop('Reunioes');
+        Schema::dropIfExists('Reunioes');
     }
 }
