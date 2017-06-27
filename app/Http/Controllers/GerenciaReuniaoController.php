@@ -51,8 +51,6 @@ class GerenciaReuniaoController extends Controller {
             Assunto::where('id', $id)->get()
         );
         
-        // var_dump($assunto);
-        // die();
         return view('reunioes.gerencia-ata', $reuniaoDados, $ataDados, $assunto);
     }
 }

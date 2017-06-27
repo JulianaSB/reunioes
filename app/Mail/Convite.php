@@ -13,31 +13,14 @@ class Convite extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
-        //
+       //
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
-     public function build(Request $request)
+    public function build(Request $request)
     {
-       /* 
-        $id = $request->participantes;
-            'itensConvidado' =>
-             Reuniao::where('Participantes',$id)->get()
-           );*/
-
-  
-           $Convite= array(
+            $Convite= array(
              
             'Assunto' => $request->assunto,
             'Tema' => $request->tema,
@@ -49,9 +32,7 @@ class Convite extends Mailable
             'segunda_chamada' => $request->segunda_chamada,
             'Participantes' => $request->participantes,
              );
-
-        
-       // return $this->view('email.convite');
+    
         return $this->view('email.convite', $Convite);
     }
 }

@@ -11,19 +11,15 @@ use App\Reuniao;
 class ConviteController extends Controller
 { 
 
-public function testMail(Request $request)
-{
-   // $mail = "a@a.a";
-    //Mail::to($mail)->send(new Convite);
-    //
+	public function testMail(Request $request)
+	{
+	  $id = $request->participantes;                        
+	  $convidado = DB::table('users')->where('id', $id)->first();
 
-  $id = $request->participantes;                        
-  $convidado = DB::table('users')->where('id', $id)->first();
+	  $mail=$convidado->email;   
+	   
+	  Mail::to($mail)->send(new Convite($request));
 
-  $mail=$convidado->email;   
-   
-  Mail::to($mail)->send(new Convite($request));
-
-  return redirect('/logado');
-}
+	  return redirect('/logado');
+	}
 }

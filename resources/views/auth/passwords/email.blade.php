@@ -9,8 +9,7 @@
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
-                              <!-- {{session('status') }}-->
-                             <?php echo "Enviamos seu link de redefinição de senha por e-mail!"; ?>
+                              <?php echo "Enviamos seu link de redefinição de senha por e-mail!"; ?>
                         </div>
                     @endif
 
@@ -25,7 +24,6 @@
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
-                                        <!--strong>{{ $errors->first('email') }}</strong-->
                                         <?php echo "Não encontramos um usuário com esse endereço de e-mail."; ?>
                                     </span>
                                 @endif
@@ -40,6 +38,7 @@
                             </div>
                         </div>
                     </form>
+                    
                 </div>
             </div>
         </div>
