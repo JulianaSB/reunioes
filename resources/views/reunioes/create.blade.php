@@ -60,8 +60,8 @@
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="data_hora">Data e Hora</label>
-                                        <input type="text" id="datepicker" name="datepicker" class="datepicker required" placeholder="Data e Hora">
+                                        <label for="data_hora">Data</label>
+                                        <input type="text" id="datepicker" name="datepicker" class="form-control required" placeholder="Data">
                                     </div>
                                 </div>
                                
@@ -119,20 +119,8 @@
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
 </script>
 <script>
-        $(function () {
-           $("#checkBox").click(function () {
-                $('#textBox').attr("disabled", $(this).is(":checked"));
-                var $this = $(this);
-                if ($this.is(':checked')) {
-                    $('#addAssunto').append('<input type="text" class="form-control" id="assunto" name="assunto" placeholder="Assunto Novo">');
-                }else{
-                    $('#addAssunto').find('#assunto').remove();
-                }
-           });
-        });
-
-        $(function () {
-           $("#clickQuorum").click(function () {
+    $(function () {
+            $("#clickQuorum").click(function () {
                 $('#textBox').attr("disabled", $(this).is(":checked"));
                 var $this = $(this);
                 if ($this.is(':checked')) {
@@ -141,12 +129,22 @@
                     $('#addQuorum').find('#quorum').remove();
                 }
            });
-        });
-
-        $(function () {
+            $("#checkBox").click(function () {
+                $('#textBox').attr("disabled", $(this).is(":checked"));
+                var $this = $(this);
+                if ($this.is(':checked')) {
+                    $('#addAssunto').append('<input type="text" class="form-control" id="assunto" name="assunto" placeholder="Assunto Novo">');
+                }else{
+                    $('#addAssunto').find('#assunto').remove();
+                }
+           });
             $('#icheck').iCheck();
-            $('#datepicker').datepicker();
-            
+            $('#datepicker').datepicker({
+                format: 'dd/mm/yyyy',
+                startDate: '-3d',
+                language: 'pt-BR'
+            });
+
             $('#formReunioes').on('submit', function(e){
                 e.preventDefault();
                 $(".required").parent('.form-group').removeClass('has-error');
@@ -180,10 +178,10 @@
                     data:  JSON.stringify(reunioes) , 
                     contentType: "application/json; charset=utf-8",
                     success: function(response) {
-                        
+                        window.location.href ='/logado';
                     },
                     error: function(response){
-                        
+                        window.location.href = '/logado';
                     }
                 });
             });
