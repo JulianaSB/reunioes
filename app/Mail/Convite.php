@@ -24,7 +24,7 @@ class Convite extends Mailable
              
             'Assunto' => $request->assunto,
             'Tema' => $request->tema,
-            'Pauta' => $request->pauta,
+            'Pauta' => $request->pautas,
             'Descricao' => $request->descricao,
             'Data_Hora' => $request->data_hora,
             'Tipo_Reuniao' => $request->tipo_reuniao,

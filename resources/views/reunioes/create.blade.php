@@ -120,70 +120,71 @@
 </script>
 <script>
     $(function () {
-            $("#clickQuorum").click(function () {
-                $('#textBox').attr("disabled", $(this).is(":checked"));
-                var $this = $(this);
-                if ($this.is(':checked')) {
-                    $('#addQuorum').append('<input type="number" class="form-control" id="quorum" name="quorum" placeholder="Quorum Novo">');
-                }else{
-                    $('#addQuorum').find('#quorum').remove();
-                }
-           });
-            $("#checkBox").click(function () {
-                $('#textBox').attr("disabled", $(this).is(":checked"));
-                var $this = $(this);
-                if ($this.is(':checked')) {
-                    $('#addAssunto').append('<input type="text" class="form-control" id="assunto" name="assunto" placeholder="Assunto Novo">');
-                }else{
-                    $('#addAssunto').find('#assunto').remove();
-                }
-           });
-            $('#icheck').iCheck();
-            $('#datepicker').datepicker({
-                format: 'dd/mm/yyyy',
-                startDate: '-3d',
-                language: 'pt-BR'
+        $("#clickQuorum").click(function () {
+            $('#textBox').attr("disabled", $(this).is(":checked"));
+            var $this = $(this);
+            if ($this.is(':checked')) {
+                $('#addQuorum').append('<input type="number" class="form-control" id="quorum" name="quorum" placeholder="Quorum Novo">');
+            }else{
+                $('#addQuorum').find('#quorum').remove();
+            }
+        });
+        $("#checkBox").click(function () {
+            $('#textBox').attr("disabled", $(this).is(":checked"));
+            var $this = $(this);
+            if ($this.is(':checked')) {
+                $('#addAssunto').append('<input type="text" class="form-control" id="assunto" name="assunto" placeholder="Assunto Novo">');
+            }else{
+                $('#addAssunto').find('#assunto').remove();
+            }
+       });
+        $('#icheck').iCheck();
+        $('#datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            startDate: '-3d',
+            language: 'pt-BR'
+        });
+
+        $('#formReunioes').on('submit', function(e){
+            e.preventDefault();
+            $(".required").parent('.form-group').removeClass('has-error');
+            $(".required").each(function(){
+                if ($(this).val() == '')
+                    $(this).parent('.form-group').addClass('has-error');
             });
-
-            $('#formReunioes').on('submit', function(e){
-                e.preventDefault();
-                $(".required").parent('.form-group').removeClass('has-error');
-                $(".required").each(function(){
-                    if ($(this).val() == '')
-                        $(this).parent('.form-group').addClass('has-error');
-                });
                 
-                $.ajaxSetup({
-                    headers: {
+            $.ajaxSetup({
+                headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                
-                var reunioes = {
-                    _token: "{{ csrf_token() }}",
-                    assunto: $("#assunto").val(),
-                    tema: $("#tema").val(),
-                    pautas: $("#pautas").val(),
-                    descricao: $("#descricao").val(),
-                    data_hora: $("#datepicker").val(),
-                    tipo_reuniao: $("#tipo_reuniao").val(),
-                    quorum: $("#quorum").val(),
-                    segunda_chamada: $("#segunda_chamada:checked").val(),
-                    participantes: $("#participantes").val(),
                 }
+            });
+                
+            var reunioes = {
+                _token: "{{ csrf_token() }}",
+                assunto: $("#assunto").val(),
+                tema: $("#tema").val(),
+                pautas: $("#pautas").val(),
+                descricao: $("#descricao").val(),
+                data_hora: $("#datepicker").val(),
+                tipo_reuniao: $("#tipo_reuniao").val(),
+                quorum: $("#quorum").val(),
+                segunda_chamada: $("#segunda_chamada:checked").val(),
+                participantes: $("#participantes").val(),
+            }
 
-                $.ajax({
-                    type: "POST",
-                    url: "/update",
-                    data:  JSON.stringify(reunioes) , 
-                    contentType: "application/json; charset=utf-8",
-                    success: function(response) {
-                        window.location.href ='/logado';
-                    },
-                    error: function(response){
-                        window.location.href = '/logado';
-                    }
-                });
+            
+            $.ajax({
+                type: "POST",
+                url: "/reunioes",
+                data:  JSON.stringify(reunioes) , 
+                contentType: "application/json; charset=utf-8",
+                success: function(response) {
+                    window.location.href ='/logado';
+                },
+                error: function(response){
+                    window.location.href = '/logado';
+                }
             });
         });
-    </script>
+    });
+</script>
