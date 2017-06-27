@@ -85,7 +85,6 @@ error_reporting(E_ALL);
                             </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Salvar</button>
-                            <button class="btn btn-default back" href="{{ url('/reunioes-participa') }}">Cancelar</button>
                         </div>
                     </div>
                     @endforeach
@@ -135,8 +134,7 @@ error_reporting(E_ALL);
                     data:  JSON.stringify(reunioesEdit), 
                     contentType: "application/json; charset=utf-8",
                     success: function(response) {
-                        alert(response);
-                        // window.location.href = '/';
+                        window.location.href = '/reunioes-participa';
                     },
                     error: function(response){
                         
