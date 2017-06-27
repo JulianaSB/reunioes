@@ -29,7 +29,7 @@
     <!-- Main content -->
     <section class="content">
 
-        <div class="row">
+        <div class="row manage">
             <!-- left column -->
             <div class="col-md-12">
                 <!-- general form elements -->
