@@ -176,7 +176,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "/reunioes",
+                    url: "/update",
                     data:  JSON.stringify(reunioes) , 
                     contentType: "application/json; charset=utf-8",
                     success: function(response) {
