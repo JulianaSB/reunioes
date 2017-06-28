@@ -21,7 +21,7 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Reuniões</h3>
                     </div>
-                    <form  id="formReunioes" name="formReunioes">
+                    <form  id="formReunioes" name="formReunioes" role="form" method="POST" action="/testMail">
                      {{ csrf_field() }}
                         <div class="box-body">
                             <div class="row">
