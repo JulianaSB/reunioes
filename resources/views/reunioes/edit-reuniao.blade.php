@@ -5,8 +5,6 @@ error_reporting(E_ALL);
 @extends('base')
 
 @section('content')
-    
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
             Reuniões
@@ -17,87 +15,70 @@ error_reporting(E_ALL);
             <li class="active">Reuniões</li>
         </ol>
     </section>
-@if (Route::has('login'))
-         @if (Auth::check())
-    <!-- Main content -->
-    <section class="content">
-    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Reuniões</h3>
-                    </div>
-                    <form id="formReunioesEdit" name="formReunioesEdit">
-                    {{ csrf_field() }}
-                    @foreach ($itensparticipa as $items)
-                        <div class="box-body">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="assunto">Assunto</label>
-                                        <input disabled type="assunto" class="form-control required" id="assunto" name="assunto" placeholder="Assunto" value="{{ $items->Tema }}">                                   
-                                    </div>
-                                </div>
+    @if (Route::has('login'))
+        @if (Auth::check())
+            <section class="content">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Reuniões</h3>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="tema">Tema</label>
-                                        <input disabled type="tema" class="form-control required" id="tema" name="tema" placeholder="Tema" value="{{ $items->Tema }}">
-                                    </div>  
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="pautas">Pautas</label>
-                                        <input disabled type="text" class="form-control required" id="pautas" name="pautas" placeholder="Pautas" value="{{ $items->Pautas }}">
-                                        <input type="checkbox" id="checkBox" /><label>Adicionar nova Pauta: </label>                                       
-                                        <div id="addPauta"></div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="descricao">Descrição</label>
-                                        <input disabled type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $items->Descricao }}">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                     <div class="form-group">
-                                            <label for="data_hora">Data e Hora</label>
-                                            <input disabled type="text" id="datepicker" name="datepicker" class="datepicker required" placeholder="Data e Hora" value="{{ $items->Data_Hora }}">
+                            <form id="formReunioesEdit" name="formReunioesEdit">
+                                {{ csrf_field() }}
+                                @foreach ($itensparticipa as $items)
+                                    <div class="box-body">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="assunto">Assunto</label>
+                                                <input disabled type="assunto" class="form-control required" id="assunto" name="assunto" placeholder="Assunto" value="{{ $items->Tema }}">
+                                            </div>
                                         </div>
-                                </div>
-                                <div class="col-md-6">
-                                     <div class="form-group">
-                                            <label for="tipo_reuniao">Tipo de Reunião</label>
-                                            <select class="form-control" id="tipo_reuniao" name="tipo_reuniao">
-                                                    <option value="reuniao_de_area">Reunião de Área</option>
-                                            </select>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="tema">Tema</label>
+                                                <input disabled type="tema" class="form-control required" id="tema" name="tema" placeholder="Tema" value="{{ $items->Tema }}">
+                                            </div>  
                                         </div>
-                                </div>
-                                <div>
-                                    <input type="hidden" name="id" value="{{$items->ID_Reuniao}}">
-                                </div>
-                            </div>
-                        <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Salvar</button>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="pautas">Pautas</label>
+                                                <input disabled type="text" class="form-control required" id="pautas" name="pautas" placeholder="Pautas" value="{{ $items->Pautas }}">
+                                                <input type="checkbox" id="checkBox" /><label>Adicionar nova Pauta: </label>                                       
+                                                <div id="addPauta"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="descricao">Descrição</label>
+                                                <input disabled type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $items->Descricao }}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                             <div class="form-group">
+                                                    <label for="data_hora">Data e Hora</label>
+                                                    <input disabled type="text" id="datepicker" name="datepicker" class="datepicker required" placeholder="Data e Hora" value="{{ $items->Data_Hora }}">
+                                                </div>
+                                        </div>
+                                        <div>
+                                            <input type="hidden" name="id" value="{{$items->ID_Reuniao}}">
+                                        </div>
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-primary">Salvar</button>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </form>
                         </div>
                     </div>
-                    @endforeach
-                </form>
-            </div>
-        </div>
-    </section>
-     @else
-        <a href="{{ url('/login') }}">Login</a>
-        <a href="{{ url('/register') }}">Registrar</a>
+                </div>
+            </section>
+        @else
+            <a href="{{ url('/login') }}">Login</a>
+            <a href="{{ url('/register') }}">Registrar</a>
+        @endif
     @endif
-</div>
-@endif     
 @endsection
 <script
   src="https://code.jquery.com/jquery-3.2.1.js"
@@ -120,10 +101,12 @@ error_reporting(E_ALL);
         $(function () {
             $('#formReunioesEdit').on('submit', function(e){
                 e.preventDefault()                
+
                 $.ajaxSetup({
                     headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')                    }
                 });                
+
                 var reunioesEdit = {
                     pauta: $("#pauta").val(),
                 }

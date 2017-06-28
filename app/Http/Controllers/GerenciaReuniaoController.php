@@ -63,6 +63,14 @@ class GerenciaReuniaoController extends Controller {
         
         return view('reunioes.gerencia-ata', $reuniaoDados, $ataDados, $assunto);
     }
+    public function update(Request $request, $reuniao) {
+        DB::table('reunioes')
+            ->where('ID_Reuniao', $reuniao)
+            ->update(['Pautas' => $request->pauta,
+                'Assunto' => $request->assunto,
+                'Tema' => $request->tema,
+                'Descricao' => $request->descricao]);
+    }
 
     public function destroy($reuniao) {
         DB::table('reunioes')
