@@ -21,16 +21,15 @@ class Convite extends Mailable
     public function build(Request $request)
     {
             $Convite= array(
-             
-            'Assunto' => $request->assunto,
-            'Tema' => $request->tema,
-            'Pauta' => $request->pautas,
-            'Descricao' => $request->descricao,
-            'Data_Hora' => $request->data_hora,
-            'Tipo_Reuniao' => $request->tipo_reuniao,
-            'Quorum' => $request->quorum,
-            'segunda_chamada' => $request->segunda_chamada,
-            'Participantes' => $request->participantes,
+                'Assunto' => $request->assunto,
+                'Tema' => $request->tema,
+                'Pauta' => $request->pautas,
+                'Descricao' => $request->descricao,
+                'Data_Hora' => $request->data_hora,
+                'Tipo_Reuniao' => $request->tipo_reuniao,
+                'Quorum' => $request->quorum,
+                'segunda_chamada' => $request->segunda_chamada,
+                'Participantes' => $request->participantes,
              );
     
         return $this->view('email.convite', $Convite);

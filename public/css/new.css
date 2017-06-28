@@ -138,3 +138,7 @@ table.dataTable tbody td.clickable {
 .small-box a i.fa {
     margin-left: 5px;
 }
+
+.box-footer {
+    float: right;
+}
