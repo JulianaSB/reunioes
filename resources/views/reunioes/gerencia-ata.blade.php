@@ -49,12 +49,12 @@ error_reporting(E_ALL);
                         </div>
                     @endforeach
                 </form>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                   Launch demo modal
-                </button>
+                </button> -->
 
-                <a data-target="#myModal" role="button" class="btn" data-toggle="modal" class="printmodal">Launch modal</a>
-                <input type="button" onclick="cont();" value="Imprimir Div separadamente">
+                <!-- <a data-target="#myModal" role="button" class="btn" data-toggle="modal" class="printmodal">Launch modal</a> -->
+                <input type="button" onclick="cont();" value="Imprimir Ata">
 
             </div>
         </div>
