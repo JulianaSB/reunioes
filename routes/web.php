@@ -26,5 +26,5 @@ Route::resource('reunioesGerencia', 'GerenciaReuniaoController');
 Route::get('/reunioes-participa', 'ParticipaController@index');
 Route::get('/edit-reuniao/{reuniao}', 'ParticipaController@edit');
 Route::get('/gerencia-ata/{reuniao}', 'GerenciaReuniaoController@addata');
-Route::post('reunioes', 'ReuniaoController@testMail');
+//Route::post('reunioes', 'ReuniaoController@sendMail');
 Route::resource('reunioesParticipa', 'ParticipaController');
