@@ -17,8 +17,7 @@ class Reunioes extends Migration
             $table->increments('ID_Reuniao');
             $table->integer('ID_Organizador')->unsigned();
             $table->foreign('ID_Organizador')->references('id')->on('users');
-            $table->integer('Assunto')->unsigned();
-            $table->foreign('Assunto')->references('id')->on('assunto');
+            $table->string('Assunto');
             $table->string('Tema');
             $table->string('Pautas');
             $table->string('Descricao');

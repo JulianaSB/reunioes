@@ -64,7 +64,7 @@ class GerenciaReuniaoController extends Controller {
         return view('reunioes.gerencia-ata', $reuniaoDados, $ataDados, $assunto);
     }
     public function update(Request $request, $reuniao) {
-        DB::table('reunioes')
+        DB::table('Reunioes')
             ->where('ID_Reuniao', $reuniao)
             ->update(['Pautas' => $request->pauta,
                 'Assunto' => $request->assunto,
@@ -73,7 +73,7 @@ class GerenciaReuniaoController extends Controller {
     }
 
     public function destroy($reuniao) {
-        DB::table('reunioes')
+        DB::table('Reunioes')
             ->where('ID_Reuniao', $reuniao)
             ->delete();
 

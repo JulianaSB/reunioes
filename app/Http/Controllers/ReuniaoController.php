@@ -17,8 +17,8 @@ class ReuniaoController extends Controller
 
     public function create()
     {
-        $items = DB::table('Assunto')->get();
-
+        $items = DB::table('Reunioes')->pluck('Assunto');
+        
         $participantes = DB::table('users')->get();
 
         return view('reunioes.create', [

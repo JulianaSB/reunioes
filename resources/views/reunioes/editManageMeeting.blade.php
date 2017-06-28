@@ -25,7 +25,8 @@ error_reporting(E_ALL);
                             <div class="box-header with-border">
                                 <h3 class="box-title">Reuniões</h3>
                             </div>
-                            <form id="formReunioesEditGer" name="formReunioesEditGer">
+                            <form id="formReunioesEditGer" name="formReunioesEditGer"> 
+                                {{ method_field('PUT') }} 
                                 {{ csrf_field() }}
                                 @foreach ($itensparticipa as $items)
                                     <div class="box-body">

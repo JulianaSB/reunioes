@@ -30,7 +30,7 @@
                                         <label for="assunto">Assunto</label>
                                         <select id="assunto" name="assunto" class="form-control">
                                             @foreach($itemlist as $items)
-                                            <option value="{{ $items->id }}">{{ $items->assunto }}</option>
+                                            <option value="{{ $items }}">{{ $items }}</option>
                                             @endforeach
                                         </select>
                                         <br><br>
@@ -158,7 +158,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-                
+
             var reunioes = {
                 _token: "{{ csrf_token() }}",
                 assunto: $("#assunto").val(),
@@ -171,6 +171,7 @@
                 segunda_chamada: $("#segunda_chamada:checked").val(),
                 participantes: $("#participantes").val(),
             }
+
 
             
             $.ajax({
