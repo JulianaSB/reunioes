@@ -23,7 +23,7 @@ error_reporting(E_ALL);
                         <div class="box box-primary">
                             <div class="box-header with-border">
                             </div>
-                            <form id="formReunioes" name="formReunioes" method="POST" action="/testMail">
+                            <form id="formReunioesEdit" name="formReunioesEdit">
                                 @foreach ($ata as $items)
                                     <div class="box-body">
                                         <div class="row">
@@ -37,9 +37,15 @@ error_reporting(E_ALL);
                                             </div>
                                         </div>
                                     </div>
+                                    <div>
+                                        <input type="hidden" name="id" value="{{$items->ID_Ata}}">
+                                    </div>
+                                    <div class="box-footer">
+                                        <!-- <button type="submit" class="btn btn-primary">Salvar</button> -->
+                                    </div>
                                 @endforeach
                             </form>
-                            <input type="button" onclick="cont();" value="Imprimir Ata">
+                            <input type="button" onclick="cont();" value="Imprimir Ata" class="btn btn-primary">
                         </div>
                     </div>
                 </div>
@@ -76,5 +82,33 @@ error_reporting(E_ALL);
         }else{
             $('#addAssunto').find('#assunto').remove();
         }
+    });
+
+    $(function () {
+        $('#formReunioesEdit').on('submit', function(e){
+            e.preventDefault()                
+
+            $.ajaxSetup({
+                headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')                    }
+            });                
+
+            var reunioesEdit = {
+                ata_Reuniao: $("#print").val(),
+            }
+
+            $.ajax({
+                type: "PUT",
+                url: "/save-ata/{{$items->ID_Ata}}",
+                data:  JSON.stringify(reunioesEdit), 
+                contentType: "application/json; charset=utf-8",
+                success: function(response) {
+                    window.location.href = '//manageMeeting';
+                },
+                error: function(response){
+                    
+                }
+            });
+        });
     });
 </script>

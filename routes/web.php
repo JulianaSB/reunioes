@@ -28,3 +28,4 @@ Route::resource('reunioesGerencia', 'GerenciaReuniaoController');
 Route::get('/reunioes-participa', 'ParticipaController@index');
 Route::get('/edit-reuniao/{reuniao}', 'ParticipaController@edit');
 Route::resource('reunioesParticipa', 'ParticipaController');
+Route::resource('save-ata', 'GerenciaReuniaoController@updateAta');

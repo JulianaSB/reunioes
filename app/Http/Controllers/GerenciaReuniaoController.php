@@ -63,6 +63,7 @@ class GerenciaReuniaoController extends Controller {
         
         return view('reunioes.gerencia-ata', $reuniaoDados, $ataDados, $assunto);
     }
+
     public function update(Request $request, $reuniao) {
         DB::table('Reunioes')
             ->where('ID_Reuniao', $reuniao)
@@ -78,5 +79,27 @@ class GerenciaReuniaoController extends Controller {
             ->delete();
 
         return $this->index();
+    }
+
+    public function updateAta(Request $request, $reuniao, $ata)
+    {
+        $ataDados = array(
+            'ata' =>
+            Ata::where('reuniao_id', $reuniao)->get()
+        );
+        
+        $total = count(($ataDados));
+
+        if($total > 0){
+            DB::table('ata')
+             ->where('ID_Ata', $ata)
+             ->update(['ata_Reuniao' => $request->ata_Reuniao]);
+        }else{
+            $ata = new Ata;
+            $ata->reuniao_id    = $reuniao;
+            $ata->ata_Reuniao   = $request->ata_Reuniao;
+            $ata->save();
+        }
+        
     }
 }
