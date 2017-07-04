@@ -15,6 +15,7 @@ class ComposerStaticInitc687f9c24cc8171c9ce34911eb09351f
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -87,6 +88,7 @@ class ComposerStaticInitc687f9c24cc8171c9ce34911eb09351f
         'C' => 
         array (
             'Cron\\' => 5,
+            'Collective\\Html\\' => 16,
             'Carbon\\' => 7,
         ),
         'A' => 
@@ -222,6 +224,10 @@ class ComposerStaticInitc687f9c24cc8171c9ce34911eb09351f
         array (
             0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
         ),
+        'Collective\\Html\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravelcollective/html/src',
+        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
@@ -272,7 +278,10 @@ class ComposerStaticInitc687f9c24cc8171c9ce34911eb09351f
     );
 
     public static $classMap = array (
-        'CreateGerenciaReuniaosTable' => __DIR__ . '/../..' . '/database/migrations/2017_05_06_223648_create_gerencia_reuniaos_table.php',
+        'Assunto' => __DIR__ . '/../..' . '/database/migrations/2017_05_07_234648_Assunto.php',
+        'AssuntoTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AssuntoTableSeeder.php',
+        'AtaReuniao' => __DIR__ . '/../..' . '/database/migrations/2017_06_20_043148_ataReuniao.php',
+        'AtaTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AtaTableSeeder.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
@@ -726,7 +735,8 @@ class ComposerStaticInitc687f9c24cc8171c9ce34911eb09351f
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
-        'Reunioes' => __DIR__ . '/../..' . '/database/migrations/2017_04_04_035023_Reunioes.php',
+        'ReuniaoTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ReuniaoTableSeeder.php',
+        'Reunioes' => __DIR__ . '/../..' . '/database/migrations/2017_06_04_035023_Reunioes.php',
         'SebastianBergmann\\CodeCoverage\\CodeCoverage' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/CodeCoverage.php',
         'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
         'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => __DIR__ . '/..' . '/phpunit/php-code-coverage/src/Driver/Driver.php',
@@ -807,6 +817,7 @@ class ComposerStaticInitc687f9c24cc8171c9ce34911eb09351f
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

@@ -20,16 +20,16 @@
                             <div class="box-header with-border">
                                 <h3 class="box-title">Reuniões</h3>
                             </div>
-                            <form  id="formReunioes" name="formReunioes" role="form" method="POST" action="/testMail">
+                            <form  id="formReunioes" class="criaReuniao" name="formReunioes" role="form" method="POST" action="/testMail">
                                 {{ csrf_field() }}
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="assunto">Assunto</label>
+                                                <label for="assunto">Assunto<span> *</span></label>
                                                 <select id="assunto" name="assunto" class="form-control">
                                                     @foreach($itemlist as $items)
-                                                    <option value="{{ $items }}">{{ $items }}</option>
+                                                        <option value="{{ $items->id }}">{{ $items->assunto }}</option>
                                                     @endforeach
                                                 </select>
                                                 <br><br>
@@ -40,26 +40,26 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="tema">Tema</label>
+                                                <label for="tema">Tema<span> *</span></label>
                                                 <input type="tema" class="form-control required" id="tema" name="tema" placeholder="Tema">
                                             </div>  
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="pautas">Pautas</label>
+                                                <label for="pautas">Pautas<span> *</span></label>
                                                 <input type="text" class="form-control required" id="pautas" name="pautas" placeholder="Pautas">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="descricao">Descrição</label>
+                                                <label for="descricao">Descrição<span> *</span></label>
                                                 <input type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição">
                                             </div>
                                         </div>
 
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="data_hora">Data</label>
+                                                <label for="data_hora">Data<span> *</span></label>
                                                 <input type="text" id="datepicker" name="datepicker" class="form-control required" placeholder="Data">
                                             </div>
                                         </div>
@@ -83,7 +83,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label for="segunda_chamada">Segunda Chamada?</label>
+                                                <label for="segunda_chamada">Segunda Chamada?<span> *</span></label>
                                                 <br>
                                                 <input type="radio" id="segunda_chamada" name="segunda_chamada" value="1"> Sim
                                                 <input type="radio" id="segunda_chamada" name="segunda_chamada" value="0"> Não
@@ -94,15 +94,18 @@
                                                 <label for="participantes">Participantes</label>
                                                 <select multiple id="participantes" name="participantes" class="form-control">
                                                     @foreach($participa as $participantes)
-                                                    <option value="{{ $participantes->id }}">{{ $participantes->name }}</option>
+                                                        @if($participantes->id != Auth::user()->id)
+                                                            <option value="{{ $participantes->id }}">{{ $participantes->name }}</option>
+                                                        @endif
                                                     @endforeach
                                                 </select>
+                                                <span>Mantenha o CTRL pressionado e selecione os usuários que você deseja que participem da reunião.</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="box-footer">
                                         <button type="submit" class="btn btn-primary">Salvar</button>
-                                        <button class="btn btn-default back">Cancelar</button>
+                                        <button class="btn btn-defaut"><a href="{{url('logado')}}">Cancelar</a></button>
                                     </div>
                                 </div>
                             </form>
@@ -184,7 +187,7 @@
                     window.location.href ='/logado';
                 },
                 error: function(response){
-                    window.location.href = '/logado';
+
                 }
             });
         });

@@ -117,7 +117,7 @@ error_reporting(E_ALL);
                     data:  JSON.stringify(reunioesEdit), 
                     contentType: "application/json; charset=utf-8",
                     success: function(response) {
-                        window.location.href = '/reunioes-participa';
+                        window.location.href = '/participeMeeting';
                     },
                     error: function(response){
                         

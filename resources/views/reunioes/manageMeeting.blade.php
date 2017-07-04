@@ -54,7 +54,7 @@
                         <tbody>
                             @foreach ($itensgerencia as $itens)
                             <tr>
-                                <td><a href="{{ url('/gerencia-ata/') .'/'. $itens->ID_Reuniao}}"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a></td>
+                                <td><a href="{{ url('/manageAta/') .'/'. $itens->ID_Reuniao}}"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a></td>
                                 <td>{{ $itens->ID_Reuniao }}</td>
                                 <td>{{ $itens->Tema }}</td>
                                 <td>{{ $itens->Data_Hora }}</td>

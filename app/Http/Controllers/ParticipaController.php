@@ -16,7 +16,7 @@ class ParticipaController extends Controller
         $itens= array(
             'itensparticipa' =>
             Reuniao::where('Participantes',$id)->get());
-        return view('reunioes.reunioes-participa', $itens);
+        return view('reunioes.participeMeeting', $itens);
     }
 
     public function edit($reuniao)
@@ -24,7 +24,7 @@ class ParticipaController extends Controller
         $item= array(
             'itensparticipa' =>
             Reuniao::where('ID_Reuniao',$reuniao)->get());
-        return view('reunioes.edit-reuniao', $item);
+        return view('reunioes.editMeeting', $item);
     }
 
     public function update(Request $request, $reuniao)

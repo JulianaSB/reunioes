@@ -9,7 +9,7 @@ use App\Ata;
 use App\Assunto;
 use DB;
 
-class GerenciaReuniaoController extends Controller {
+class GerenciaController extends Controller {
     
     public function index() {
         $id = auth()->id();
@@ -24,8 +24,9 @@ class GerenciaReuniaoController extends Controller {
     public function edit ($reuniao) {
         $item = array(
             'itensparticipa' =>
-            Reuniao::where('ID_Reuniao',$reuniao)->get()
+            Reuniao::where('ID_Reuniao', $reuniao)->get()
         );
+
         return view('reunioes.editManageMeeting', $item);
     }
 
@@ -34,6 +35,7 @@ class GerenciaReuniaoController extends Controller {
             'itensparticipa' =>
             Reuniao::where('ID_Reuniao',$reuniao)->get()
         );
+
         return view('reunioes.viewMeeting', $item);
     }
 
@@ -61,7 +63,7 @@ class GerenciaReuniaoController extends Controller {
             Assunto::where('id', $id)->get()
         );
         
-        return view('reunioes.gerencia-ata', $reuniaoDados, $ataDados, $assunto);
+        return view('reunioes.manageAta', $reuniaoDados, $ataDados, $assunto);
     }
 
     public function update(Request $request, $reuniao) {
@@ -74,6 +76,10 @@ class GerenciaReuniaoController extends Controller {
     }
 
     public function destroy($reuniao) {
+        DB::table('Ata')
+            ->where('reuniao_id', $reuniao)
+            ->delete();
+
         DB::table('Reunioes')
             ->where('ID_Reuniao', $reuniao)
             ->delete();
