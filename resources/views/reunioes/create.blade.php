@@ -99,7 +99,7 @@
                                                         @endif
                                                     @endforeach
                                                 </select>
-                                                <span>Mantenha o CTRL pressionado e selecione os usuários que você deseja que participem da reunião.</span>
+                                                <span class="participantes">Mantenha o CTRL pressionado e selecione os usuários que você deseja que participem da reunião.</span>
                                             </div>
                                         </div>
                                     </div>

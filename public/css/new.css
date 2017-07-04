@@ -146,3 +146,7 @@ table.dataTable tbody td.clickable {
 .criaReuniao span {
     color:red;
 }
+
+.criaReuniao .participantes {
+    color:blue;
+}
