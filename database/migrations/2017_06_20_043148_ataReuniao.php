@@ -29,6 +29,6 @@ class AtaReuniao extends Migration
      */
     public function down()
     {
-        Schema::drop('Ata');
+        Schema::dropIfExists('Ata');
     }
 }

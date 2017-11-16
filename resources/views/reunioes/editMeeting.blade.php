@@ -25,41 +25,40 @@ error_reporting(E_ALL);
                             <div class="box-header with-border">
                                 <h3 class="box-title">Reuniões</h3>
                             </div>
-                            <form id="formReunioesEditGer" name="formReunioesEditGer"> 
-                                {{ method_field('PUT') }} 
+                            <form id="formReunioesEdit" name="formReunioesEdit">
                                 {{ csrf_field() }}
                                 @foreach ($itensparticipa as $items)
                                     <div class="box-body">
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="assunto">Assunto</label>
-                                                <input type="assunto" class="form-control required" id="assunto" name="assunto" placeholder="Assunto" value="{{ $items->Tema }}">
+                                                <input disabled type="assunto" class="form-control required" id="assunto" name="assunto" placeholder="Assunto" value="{{ $items->Tema }}">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="tema">Tema</label>
-                                                <input type="tema" class="form-control required" id="tema" name="tema" placeholder="Tema" value="{{ $items->Tema }}">
+                                                <input disabled type="tema" class="form-control required" id="tema" name="tema" placeholder="Tema" value="{{ $items->Tema }}">
                                             </div>  
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="pautas">Pautas</label>
-                                                <input type="text" class="form-control required" id="pautas" name="pautas" placeholder="Pautas" value="{{ $items->Pautas }}" disabled>
-                                                <input type="checkbox" id="checkBox" /><label>Adicionar nova Pauta: </label>
+                                                <input disabled type="text" class="form-control required" id="pautas" name="pautas" placeholder="Pautas" value="{{ $items->Pautas }}">
+                                                <input type="checkbox" id="checkBox" /><label>Adicionar nova Pauta: </label>                                       
                                                 <div id="addPauta"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="descricao">Descrição</label>
-                                                <input type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $items->Descricao }}">
+                                                <input disabled type="text" class="form-control required" id="descricao" name="descricao" placeholder="Descrição" value="{{ $items->Descricao }}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                              <div class="form-group">
                                                     <label for="data_hora">Data e Hora</label>
-                                                    <input type="text" id="datepicker" name="datepicker" class="datepicker required" placeholder="Data e Hora" value="{{ $items->Data_Hora }}">
+                                                    <input disabled type="text" id="datepicker" name="datepicker" class="datepicker required" placeholder="Data e Hora" value="{{ $items->Data_Hora }}">
                                                 </div>
                                         </div>
                                         <div>
@@ -82,9 +81,9 @@ error_reporting(E_ALL);
     @endif
 @endsection
 <script
-    src="https://code.jquery.com/jquery-3.2.1.js"
-    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-    crossorigin="anonymous">
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous">
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/i18n/jquery-ui-timepicker-addon-i18n.js"></script>
     <script>
@@ -100,33 +99,28 @@ error_reporting(E_ALL);
            });
         });
         $(function () {
-            $('#formReunioesEditGer').on('submit', function(e){
-                e.preventDefault()
+            $('#formReunioesEdit').on('submit', function(e){
+                e.preventDefault()                
 
                 $.ajaxSetup({
                     headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')                    }
+                });                
 
                 var reunioesEdit = {
                     pauta: $("#pauta").val(),
-                    assunto: $("#assunto").val(),
-                    tema: $("#tema").val(),
-                    descricao: $("#descricao").val(),
-                    datepicker: $("#datepicker").val(),
                 }
 
                 $.ajax({
                     type: "PUT",
-                    url: "/updateMeeting/{{$items->ID_Reuniao}}",
-                    data:  JSON.stringify(reunioesEdit),
+                    url: "/reunioesParticipa/{{$items->ID_Reuniao}}",
+                    data:  JSON.stringify(reunioesEdit), 
                     contentType: "application/json; charset=utf-8",
                     success: function(response) {
-                        window.location.href = '/manageMeeting';
+                        window.location.href = '/participeMeeting';
                     },
-                    error: function(response){ 
-
+                    error: function(response){
+                        
                     }
                 });
             });

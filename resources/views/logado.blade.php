@@ -130,11 +130,8 @@
                                 <a href="{{ url('manageMeeting') }}" class="btn btn-default btn-lg">Gerenciar Reuniões</a>
                             </li>
                             <li>
-                                <a href="{{ url('reunioes-participa') }}" class="btn btn-default btn-lg">Reuniões que participa</a>
+                                <a href="{{ url('participeMeeting') }}" class="btn btn-default btn-lg">Reuniões que participa</a>
                             </li>
-                            <!--<li>
-                                <a href="{{ url('reunioes-participa') }}" class="btn btn-default btn-lg">Convites de Reuniões</a>
-                            </li>-->
                         </ul>
                     </div>
                 </div>

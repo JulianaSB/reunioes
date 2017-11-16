@@ -1,15 +1,8 @@
-<?php
-ini_set('display_errors', 1); 
-error_reporting(E_ALL);
-?>
 @extends('base')
 
 @section('content')
-    
-    <!-- Content Header (Page header) -->
     <section class="content-header">
-        <h1>
-            Reuniões
+        <h1>Reuniões
             <small>Descrição</small>
         </h1>
         <ol class="breadcrumb">
@@ -17,6 +10,7 @@ error_reporting(E_ALL);
             <li class="active">Reuniões</li>
         </ol>
     </section>
+<<<<<<< HEAD
 @if (Route::has('login'))
          @if (Auth::check())
     <!-- Main content -->
@@ -97,19 +91,18 @@ error_reporting(E_ALL);
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Salvar</button>
                             <button class="btn btn-default back">Cancelar</button>
+
                         </div>
                     </div>
-                </form>
-            </div>
-        </div>
-    </section>
-     @else
-        <a href="{{ url('/login') }}">Login</a>
-        <a href="{{ url('/register') }}">Registrar</a>
+                </div>
+            </section>
+        @else
+            <a href="{{ url('/login') }}">Login</a>
+            <a href="{{ url('/register') }}">Registrar</a>
+        @endif
     @endif
-</div>
-@endif     
 @endsection
+
 <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous">
 </script>
  <script>

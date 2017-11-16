@@ -33,8 +33,7 @@
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
-                                      <!--strong>{{ $errors->first('email') }}</strong-->
-                                       <strong><?php echo "Este endereço de email não é válido"; ?></strong>
+                                        <strong><?php echo "Este endereço de email não é válido"; ?></strong>
                                     </span>
                                 @endif
                             </div>
@@ -50,7 +49,6 @@
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
-                                       <!--strong>{{ $errors->first('password') }}</strong-->
                                         <strong><?php echo "A senha deve ter no mínimo 6 dígitos"; ?></strong>
                                     </span>
                                 @endif
@@ -109,8 +107,4 @@
           return true;
     }
 
-    jQuery(document).ready(function () {
-        $ ( '#CampoCpf' ) .mask ( '999.999.999-99' , { reverse: true });
-        $ ( '#ra' ) .mask ( '999999-9');
-});
  </script>

@@ -117,6 +117,9 @@
                             <li>
                                 <a href="{{ url('/register') }}" class="btn btn-default btn-lg">Cadastre-se</a>
                             </li>
+                            <li>
+                                <a href="{{ url('/login') }}" class="btn btn-default btn-lg">Faça o Login</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

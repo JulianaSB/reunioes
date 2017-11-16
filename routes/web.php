@@ -26,3 +26,4 @@ Route::get('/gerencia-ata/{reuniao}', 'GerenciaReuniaoController@addata');
 Route::get('/update', 'ParticipaController@update');
 Route::post('/testMail', 'ConviteController@testMail');
 Route::resource('/users', 'UsuariosController');
+

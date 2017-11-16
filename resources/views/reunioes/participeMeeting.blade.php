@@ -49,7 +49,7 @@
                         
                         @foreach ($itensparticipa as $itens)
                         <tr>
-                            <td><a href="{{ url('/edit-reuniao/') .'/'. $itens->ID_Reuniao}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                            <td><a href="{{ url('/editMeeting/') .'/'. $itens->ID_Reuniao}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
                             <td>{{ $itens->Tema }}</td>
                             <td>{{ $itens->Data_Hora }}</td>
 

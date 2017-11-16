@@ -29,7 +29,7 @@
     <!-- Main content -->
     <section class="content">
 
-        <div class="row">
+        <div class="row manage">
             <!-- left column -->
             <div class="col-md-12">
                 <!-- general form elements -->
@@ -42,21 +42,29 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th></th>
+                                <th>Ata</th>
                                 <th>Reunião ID</th>
                                 <th>Tema</th>
                                 <th>Criado em</th>
-                                <th>Ata</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($itensgerencia as $itens)
                             <tr>
-                                <td><a href="{{ url('/editManageMeeting/') .'/'. $itens->ID_Reuniao}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+                                <td><a href="{{ url('/manageAta/') .'/'. $itens->ID_Reuniao}}"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a></td>
                                 <td>{{ $itens->ID_Reuniao }}</td>
                                 <td>{{ $itens->Tema }}</td>
                                 <td>{{ $itens->Data_Hora }}</td>
-                                <td><a href="{{ url('/gerencia-ata/') .'/'. $itens->ID_Reuniao}}"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a></td>
+                                <td><center><a href="{{ url('/viewMeeting/') .'/'. $itens->ID_Reuniao}}"><i class="fa fa-eye" aria-hidden="true"></i></a></center></td>
+                                <td><center><a href="{{ url('/editManageMeeting/') .'/'. $itens->ID_Reuniao}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></center></td>
+                                <td><center>
+                                <form method="DELETE" action="{{ url('/deleteMeeting/') . '/' . $itens->ID_Reuniao}}">
+                                    <button><i class="fa fa-times" aria-hidden="true"></i></button>
+                                </form>
+                                </center></td>
                             </tr>
                             @endforeach
                         </tbody>

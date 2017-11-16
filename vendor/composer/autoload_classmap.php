@@ -6,7 +6,10 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'CreateGerenciaReuniaosTable' => $baseDir . '/database/migrations/2017_05_06_223648_create_gerencia_reuniaos_table.php',
+    'Assunto' => $baseDir . '/database/migrations/2017_05_07_234648_Assunto.php',
+    'AssuntoTableSeeder' => $baseDir . '/database/seeds/AssuntoTableSeeder.php',
+    'AtaReuniao' => $baseDir . '/database/migrations/2017_06_20_043148_ataReuniao.php',
+    'AtaTableSeeder' => $baseDir . '/database/seeds/AtaTableSeeder.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
@@ -460,7 +463,8 @@ return array(
     'PHP_Token_XOR_EQUAL' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
-    'Reunioes' => $baseDir . '/database/migrations/2017_04_04_035023_Reunioes.php',
+    'ReuniaoTableSeeder' => $baseDir . '/database/seeds/ReuniaoTableSeeder.php',
+    'Reunioes' => $baseDir . '/database/migrations/2017_06_04_035023_Reunioes.php',
     'SebastianBergmann\\CodeCoverage\\CodeCoverage' => $vendorDir . '/phpunit/php-code-coverage/src/CodeCoverage.php',
     'SebastianBergmann\\CodeCoverage\\CoveredCodeNotExecutedException' => $vendorDir . '/phpunit/php-code-coverage/src/Exception/CoveredCodeNotExecutedException.php',
     'SebastianBergmann\\CodeCoverage\\Driver\\Driver' => $vendorDir . '/phpunit/php-code-coverage/src/Driver/Driver.php',
@@ -541,5 +545,5 @@ return array(
     'SebastianBergmann\\ResourceOperations\\ResourceOperations' => $vendorDir . '/sebastian/resource-operations/src/ResourceOperations.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
-    'Usuarios' => $baseDir . '/database/migrations/2017_04_02_232618_Usuarios.php',
+    'UsersTableSeeder' => $baseDir . '/database/seeds/UsersTableSeeder.php',
 );

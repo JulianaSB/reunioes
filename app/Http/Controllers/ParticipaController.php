@@ -4,36 +4,33 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ParticipaModel;
-use DB;
 use App\Reuniao;
+use DB;
 
 class ParticipaController extends Controller
 {
     public function index()
     {
-    	 $id = auth()->id();
+    	$id = auth()->id();
 
-         $itens= array(
-             'itensparticipa' =>
-             Reuniao::where('Participantes',$id)->get());
-         return view('reunioes.reunioes-participa', $itens);
+        $itens= array(
+            'itensparticipa' =>
+            Reuniao::where('Participantes',$id)->get());
+        return view('reunioes.participeMeeting', $itens);
     }
-   
+
     public function edit($reuniao)
-        {
-          $item= array(
-             'itensparticipa' =>
-             Reuniao::where('ID_Reuniao',$reuniao)->get());
-         return view('reunioes.edit-reuniao', $item);
-        }
-    public function update($reuniao)
-     {
+    {
+        $item= array(
+            'itensparticipa' =>
+            Reuniao::where('ID_Reuniao',$reuniao)->get());
+        return view('reunioes.editMeeting', $item);
+    }
+
+    public function update(Request $request, $reuniao)
+    {
      	DB::table('reunioes')
              ->where('ID_Reuniao', $reuniao)
-             ->update(['Pauta' => $request->$pauta]);
-     }
-    // public function destroy(Article $article)
-    // {
-    // 	return (string) $artcile->delete();
-    // }
+             ->update(['Pautas' => $request->pauta]);
+    }
 }
