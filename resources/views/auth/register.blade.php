@@ -39,38 +39,9 @@
                                 @endif
                             </div>
                         </div>
-
-                       <div class="form-group{{ $errors->has('ra') ? ' has-error' : '' }}">
-                            <label for="ra"  class="col-md-4 control-label">R.A.</label>
-
-                            <div class="col-md-6">
-                                <input id="ra" type="text" onkeyup="somenteNumeros(this);" class="form-control" name="ra" maxlength="7" value="{{ old('ra') }}" required autofocus>
-
-                                @if ($errors->has('ra'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('ra') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="form-group{{ $errors->has('tipo') ? ' has-error' : '' }}">
+                            <input id="tipo" type="hidden" class="form-control" name="tipo" value="1">
                         </div>
-
-                        <div class="form-group{{ $errors->has('setor') ? ' has-error' : '' }}">
-                            <label for="setor" class="col-md-4 control-label">Setor</label>
-
-                            <div class="col-md-6">
-                                <input id="setor" type="text" class="form-control" onkeypress="return txtBoxFormat(event);" name="setor" value="{{ old('setor') }}" required autofocus>
-                            </div>
-                        </div>
-
-                         <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
-                            <label for="cpf" class="col-md-4 control-label">CPF</label>
-
-                            <div class="col-md-6">
-                                <input id="cpf" type="text" onkeyup="somenteNumeros(this);" class="form-control" name="cpf" maxlength="11" value="{{ old('cpf') }}" required autofocus>
-
-                            </div>
-                        </div>
-
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Senha</label>
 

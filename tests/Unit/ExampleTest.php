@@ -17,4 +17,21 @@ class ExampleTest extends TestCase
     {
         $this->assertTrue(true);
     }
+    public function testLogin()
+    {
+    	if (session()->has('login')) {
+    		return view('logado');
+    	}
+    	
+    }
+
+    public function testePostUser()
+    {
+    	$this->post('/users',[
+    		'name' => 'Teste Insert',
+    		'email' => 'insert55@gmail.com',
+    		'tipo'  => '2',
+    		'password' => bcrypt('123456')
+    		]);
+    }
 }
